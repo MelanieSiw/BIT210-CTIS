@@ -27,7 +27,7 @@
 					<li class = "active"><a href="register-test-center.html">Register Test Center</a></li>
 					<li><a href="record-tester.html">Record Tester</a></li>
 					<li><a href="manage-test-kit.html">Manage Test Kit Stock</a></li>
-					<li><a href="#">Log Out</a></li>
+					<li><a href="Login.html">Log Out</a></li>
 				</ul>
 			</nav>
 
@@ -42,33 +42,31 @@
 					<h2 style ="color : #dae0eb; ">Record New Tester</h2>
 					<p style ="font-size: 16px;"> *Please fill in the form below to record a new tester* </p>
 
-					<div class ="container">
+					<div class ="container align-center">
 						<form action="" method ="POST" class ="form">
 							<div class = "form-group">
-								<input type ="text" class = "form-control"
+								<input type ="text" class = "form-control" style = "text-align:center;"
 								placeholder="Tester Username" id ="tusername" name = "tusername"
 								tabindex="1" required>
-								<label for = "tusername" class="form-label"> Tester Username </label>
-							</div>
+							</div> <br>
 
 							<div class = "form-group">
-								<input type ="password" class = "form-control" placeholder="Tester Password" id ="tpassword" name = "tpassword"
+								<input type ="password" style = "text-align:center;"class = "form-control" placeholder="Tester Password" id ="tpassword" name = "tpassword"
 								tabindex="2" required>
-								<label for = "tpassword" class="form-label"> Tester Password </label>
-							</div>
+							</div><br>
 
 							<div class = "form-group">
-								<input type ="text" class = "form-control" placeholder="Tester Fullname" id ="tname" name = "tname"
+								<input type ="text" class = "form-control" style = "text-align:center;" placeholder="Tester Fullname" id ="tname" name = "tname"
 								tabindex="3" required>
-								<label for = "tname" class="form-label"> Tester Fullname</label>
-							</div>
+							</div><br>
 
 						</form>
 
 							  <button id="submitButton" name="submitForm" class="button special" type="submit" onclick="return verifyForm()">REGISTER</button>
 
+								<br><br>
 								<h2> Recorded Tester </h2>
-								<table class ="content-table">
+								<table class ="content-table" style ="color:black;">
 									<thead>
 										<tr>
 											<th> Tester Username </th>
