@@ -3739,7 +3739,6 @@
 			opacity: 1;
 			position: relative;
 			z-index: 2;
-
 		}
 
 		#banner h1 {
@@ -3804,7 +3803,7 @@
 			}
 
 				#banner .inner {
-					width: 100%;
+					width:80%;
 				}
 
 				#banner h1 {
@@ -3853,7 +3852,7 @@
 			  border: none;
 			  font-size: 16px;
 			  color: #FFFFFF;
-			  padding: 20px;
+			  padding: 1px;
 			  width: 200px;
 			  text-align: center;
 			  -webkit-transition-duration: 0.4s; /* Safari */
