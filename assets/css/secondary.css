@@ -96,6 +96,25 @@ body {
 	transform: scale(1.05,1.05);
 }
 
+/* End of Form Register Test Center */
+
+/* Table for Record Tester */
+.content-table{
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size:0.9em;
+  min-width: 400px;
+}
+
+.content-table thead tr {
+  background-color: black;
+  color: white;
+  text-align: left;
+}
+
+
+
+/* End of Table for Record Tester */
 /* End of Register Test Center */
 
 /* Login page */
