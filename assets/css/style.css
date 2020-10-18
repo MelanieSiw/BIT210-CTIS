@@ -1372,7 +1372,7 @@ section {
 # Login page
 --------------------------------------------------------------*/
 .login-background{
-  background-image: url("../../images/laptop_typing.jpg");
+  background-image: url("../../assets/img/laptop_typing.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
@@ -1395,13 +1395,15 @@ section {
 }
 
 #login_button{
-  border-radius:10px;
+  background-image: url("../../assets/img/background-color.jpg");
+  border-radius:25px;
   width:80%;
   height:45px;
-  background-image: url("../../images/background_color.jpg");
   margin-top:40px;
   font-size:120%;
-
+  color:black;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
 }
 
 #login_button:hover {
@@ -1463,7 +1465,7 @@ section {
 
 @media (max-width: 500px) {
   .login-background{
-    background-image: url("../../images/laptop_typing.jpg");
+    background-image: url("../../assets/img/laptop_typing.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
@@ -1473,25 +1475,32 @@ section {
     box-shadow: 0px 0px 20px 0px;
     border-radius:10px;
     padding: 0 0 70px 0;
+    display: flex;
+    align-items:center;
     width:85%;
-    margin:auto;
-    margin-top:150px;
-    font-size: 14px;
-    background: #fff;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+
   }
 
   .login-width{
-    width:100%;
+    width:95%;
     margin:auto;
   }
 
   #login_button{
-    border-radius:10px;
-    width:80%;
-    height:45px;
-    background-image: url("../../images/background_color.jpg");
+    background-image: url("../../assets/img/background-color.jpg");
+    border-radius:25px;
     margin-top:40px;
+    color: black;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
   }
+
   #login .login-top .social-links a {
     margin-bottom: 25px;
   }
