@@ -511,59 +511,59 @@ section {
 
 /* About Us Section
 --------------------------------*/
-#about {
+#registerTC {
   padding: 80px 0;
 }
 
-#about .about-content {
+#registerTC .about-content {
   padding-top: 40px;
 }
 
-#about .about-content h2 {
+#registerTC .about-content h2 {
   color: #413e66;
   font-family: "Montserrat", sans-serif;
   font-weight: 700;
 }
 
-#about .about-content h3 {
+#registerTC .about-content h3 {
   color: #696592;
   font-weight: 400;
   font-size: 22px;
   font-style: italic;
 }
 
-#about .about-content ul {
+#registerTC .about-content ul {
   list-style: none;
   padding: 0;
 }
 
-#about .about-content ul li {
+#registerTC .about-content ul li {
   padding-bottom: 10px;
 }
 
-#about .about-content ul li i {
+#registerTC .about-content ul li i {
   font-size: 20px;
   padding-right: 4px;
   color: #1bb1dc;
 }
 
-#about .about-img {
+#registerTC .about-img {
   position: relative;
   margin: 30px 30px 30px 30px;
 }
 
-#about .about-img img {
+#registerTC .about-img img {
   width: 100%;
   border: 8px solid #fff;
   transition: .5s;
 }
 
-#about .about-img img:hover {
+#registerTC .about-img img:hover {
   width: 100%;
   transform: scale(1.03);
 }
 
-#about .about-img::before {
+#registerTC .about-img::before {
   position: absolute;
   left: -31px;
   top: -30px;
@@ -575,7 +575,7 @@ section {
   transition: .5s;
 }
 
-#about .about-img::after {
+#registerTC .about-img::after {
   position: absolute;
   right: -31px;
   bottom: -30px;
@@ -1509,6 +1509,7 @@ section {
   font-size: 13px;
 }
 
+
 #footer .php-email-form .error-message {
   display: none;
   color: #fff;
@@ -1577,6 +1578,19 @@ section {
   padding: 8px 30px;
   color: #fff;
   transition: 0.3s;
+}
+button{
+  background: #1bb1dc;
+  border: 0;
+  border-radius: 3px;
+  padding: 8px 30px;
+  color: #fff;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #0a98c0;
+  cursor: pointer;
 }
 
 #footer .php-email-form button[type="submit"]:hover {
