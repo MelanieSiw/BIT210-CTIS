@@ -1371,19 +1371,19 @@ section {
 /*--------------------------------------------------------------
 # Login page
 --------------------------------------------------------------*/
-#login-background{
-  background-image: url("../../images/background_color.jpg");
+.login-background{
+  background-image: url("../../images/laptop_typing.jpg");
   background-repeat: no-repeat;
   background-size: cover;
 }
 
-#Login {
+#login {
   box-shadow: 0px 0px 20px 0px;
   border-radius:10px;
   padding: 0 0 70px 0;
-  width:50%;
+  width:40%;
   margin:auto;
-  margin-top:80px;
+  margin-top:70px;
   font-size: 14px;
   background: #fff;
 }
@@ -1406,18 +1406,77 @@ section {
   cursor: pointer;
 }
 
-#Login .Login-top {
+#login .footer-top {
   padding: 60px 0 30px 0;
   background: #f5f8fd;
 }
 
-#Login .Login-top .Login-info {
+#login .footer-top .footer-info {
   margin-bottom: 30px;
+}
+
+#login .footer-top .footer-info h3 {
+  font-size: 34px;
+  margin: 0 0 20px 0;
+  padding: 2px 0 2px 0;
+  line-height: 1;
+  font-family: "Montserrat", sans-serif;
+  color: #413e66;
+  font-weight: 400;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+#login .footer-top .footer-info p {
+  font-size: 13px;
+  line-height: 24px;
+  margin-bottom: 0;
+  font-family: "Montserrat", sans-serif;
+  color: #535074;
+}
+
+#login .footer-top .social-links a {
+  font-size: 18px;
+  display: inline-block;
+  background: #1bb1dc;
+  color: #fff;
+  line-height: 1;
+  padding: 8px 0;
+  margin-right: 4px;
+  border-radius: 50%;
+  text-align: center;
+  width: 36px;
+  height: 36px;
+  transition: 0.3s;
+}
+
+#login .footer-top .social-links a:hover {
+  background: #0a98c0;
+  color: #fff;
 }
 
 
 
-@media only screen and (max-width: 600px) {
+
+@media (max-width: 500px) {
+  .login-background{
+    background-image: url("../../images/laptop_typing.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+  }
+
+  #login {
+    box-shadow: 0px 0px 20px 0px;
+    border-radius:10px;
+    padding: 0 0 70px 0;
+    width:85%;
+    margin:auto;
+    margin-top:150px;
+    font-size: 14px;
+    background: #fff;
+  }
+
   .login-width{
     width:100%;
     margin:auto;
@@ -1430,46 +1489,45 @@ section {
     background-image: url("../../images/background_color.jpg");
     margin-top:40px;
   }
-}
-@-webkit-keyframes animate-loading {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
+  #login .login-top .social-links a {
+    margin-bottom: 25px;
   }
 }
 
-@keyframes animate-loading {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
 
-#Login .copyright {
+
+  #login .login-top .login-newsletter input[type="submit"] {
+  background: #1bb1dc;
+  border: 1px solid #1bb1dc;
+  width: 35%;
+  padding: 6px 0;
   text-align: center;
-  padding-top: 30px;
-  color: #535074;
-  font-size: 15px;
-}
+  color: #fff;
+  transition: 0.3s;
+  cursor: pointer;
+  }
 
-#Login .credits {
-  text-align: center;
-  font-size: 14px;
-  padding-top: 4px;
-  color: #8582a8;
-}
+  #login .login-top .login-newsletter input[type="submit"]:hover {
+  background: #0a98c0;
+  }
 
-#Login .credits a {
-  color: #1bb1dc;
-}
+  #login .php-email-form .validate {
+  display: none;
+  color: red;
+  margin: 0 0 15px 0;
+  font-weight: 400;
+  font-size: 13px;
+  }
 
-#Login .credits a:hover {
-  color: #0a98c0;
-}
+
+  #login .php-email-form .error-message {
+  display: none;
+  color: #fff;
+  background: #ed3c0d;
+  text-align: left;
+  padding: 15px;
+  font-weight: 600;
+  }
 
 
 /*--------------------------------------------------------------
