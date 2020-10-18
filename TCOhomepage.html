@@ -51,7 +51,7 @@
             </ul>
           </li>
           <li><a href="#footer">Contact Us</a></li>
-          <li><a href="#">Log Out</a></li>
+          <li><a href="loginNew.html">Log Out</a></li>
         </ul>
       </nav><!-- .main-nav-->
 
@@ -65,7 +65,7 @@
         <div class="col-md-6 intro-info order-md-first order-last" data-aos="zoom-in" data-aos-delay="100">
           <h2>Covid Testing<br>Information <span>System</span></h2>
           <div>
-            <a href="#registerTC" class="btn-get-started scrollto">Get started by Register a Test Center</a>
+            <a href="#registerTC" class="btn-get-started scrollto">Get started by Registering a Test Center</a>
           </div>
         </div>
 
@@ -93,7 +93,7 @@
 
           <div class="col-lg-7 col-md-6">
             <div class="about-content" data-aos="fade-left" data-aos-delay="100">
-              <h2>Register Test Center</h2><br>
+              <h2>Register New Test Center</h2><br>
               <div class="form">
                     <div class="form-group">
                       <input type="text" name="name" class="form-control" id="name" placeholder="Test Center Name"/>
@@ -101,8 +101,29 @@
                     </div>
                     </div>
                       <div class="text-center"><button href ="#">Register</button></div>
+                      <br><br><br>
 
-                <br><br><br><br><br>
+              <h2>Registered Test Center</h2>
+              <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">Test Center ID</th>
+                      <th scope="col">Test Center Name</th>
+                      <th scope="col">Edit</th>
+                      <th scope="col">Delete</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td scope="row">TC-1</td>
+                      <td>Sunway Test Center</td>
+                      <td><button class="btn"><i class="fa fa-edit"></button></td>
+                      <td><button class="btn"><i class="fa fa-trash"></button></td>
+                    </tr>
+                  </tbody>
+              </table>
+                <br><br><br>
+
               <ul>
                 <li><i class="ion-android-checkmark-circle"></i> Only <b>ONE</b> Test Center is allowed for each Test Center Officer.</li>
                 <li><i class="ion-android-checkmark-circle"></i> Test Center Name should be entered wisely. Changes are currently <b>NOT</b> available.</li>
