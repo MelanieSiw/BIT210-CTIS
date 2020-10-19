@@ -87,46 +87,40 @@
 
           <div class="col-lg-5 col-md-6">
             <div class="about-img" data-aos="fade-right" data-aos-delay="100">
-              <img src="assets/img/mask.jpg" alt="">
+              <img src="assets/img/test-kit.jpg" alt="">
             </div>
           </div>
 
           <div class="col-lg-7 col-md-6">
             <div class="about-content" data-aos="fade-left" data-aos-delay="100">
-              <h2>Register New Test Center</h2><br>
+              <h2>Add Test Kit Stock</h2><br>
               <div class="form">
                     <div class="form-group">
-                      <input type="text" name="name" class="form-control" id="name" placeholder="Test Center Name"/>
-                      <small class="form-text text-muted">Please enter Test Center name.</small>
+                      <input type="text" name="name" class="form-control" id="name" placeholder="Test Kit name"/>
+                      <small class="form-text text-muted">Please enter Test Kit name.</small>
                     </div>
+
+                    <div class="form-group">
+                      <input
+                        type="number"
+                        name="stock"
+                        id="stock"
+                        class="form-control"
+                        pattern="^$|^([0-9]|[1-9][0-9]|[1][0][0])?"
+                        required
+                        placeholder="e.g. 1">
+                      <small class="form-text text-muted">Please enter the amount for this test kit.</small>
                     </div>
-                      <div class="text-center"><button href ="#">Register</button></div>
+
+                    </div>
+                      <div class="text-center"><button href ="#">Add Test Kit</button></div>
                       <br><br><br><br>
 
-              <h2>Registered Test Center</h2>
-              <table class="table">
-                  <thead>
-                    <tr>
-                      <th scope="col">Test Center ID</th>
-                      <th scope="col">Test Center Name</th>
-                      <th scope="col">Edit</th>
-                      <th scope="col">Delete</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td scope="row">TC-1</td>
-                      <td>Sunway Test Center</td>
-                      <td><button class="btn"><i class="fa fa-edit"></button></td>
-                      <td><button class="btn"><i class="fa fa-trash"></button></td>
-                    </tr>
-                  </tbody>
-              </table>
-                <br><br>
+
 
               <ul>
-                <li><i class="ion-android-checkmark-circle"></i> Only <b>ONE</b> Test Center is allowed for each Test Center Officer.</li>
                 <li><i class="ion-android-checkmark-circle"></i> Test Center Name should be entered wisely. Changes are currently <b>NOT</b> available.</li>
+                <li><i class="ion-android-checkmark-circle"></i> To edit or delete any test kits, click <a href ="#addDelete"> here </a></li>
               </ul>
             </div>
           </div>
@@ -136,45 +130,72 @@
     </section><!-- End About Section -->
 
     <!-- ======= Services Section ======= -->
-    <section id="services" class="services section-bg">
+    <section id="addDelete" class="services section-bg">
       <div class="container" data-aos="fade-up">
 
         <header class="section-header">
-          <h3>Why is testing important?</h3>
-          <p>“Testing is critical to understand the pattern of virus spread in order to develop strategies to mitigate spread.”<br><br>
-          <small>— Dr. Louis Mansky, Professor and Director, Institute for Molecular Virology, University of Minnesota<small></p>
+          <h3>Manage Test Kit Stocks</h3><br>
         </header>
 
-        <div class="row">
-          <div class="col-sm-6" data-aos="zoom-in" data-aos-delay="200">
-            <div class="box">
-              <div class="icon" style="background: #fff0da;"><i class="ion-android-clipboard" style="color: #e98e06;"></i></div>
-              <h4 class="title">
-                Tester
-              </h4>
-              <p>The person who do medical check up on the patients, mostly finding out for Coronavirus disease (COVID-19) infection</p>
-              <a href="record-tester.html" class="btn btn-warning">
-                Record Tester
-              </a>
-            </div>
-          </div>
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Test Kit ID</th>
+                <th scope="col">Test Kit Name</th>
+                <th scope="col">Stock</th>
+                <th scope="col">Delete</th>
+                <th scope="col">Save</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td scope="row">TK-1</td>
+                <td>Blood Test Test Kit</td>
+                <td><input
+                  type="number"
+                  name="stock"
+                  id="stock"
+                  class="form-control"
+                  pattern="^$|^([0-9]|[1-9][0-9]|[1][0][0])?"
+                  required
+                  placeholder="e.g. 1"></td>
+                <td><button class="btn"><i class="fa fa-trash"></button></td>
+                <td><button class="btn"><i class="fa fa-save"></button></td>
+              </tr>
 
-          <div class="col-sm-6" data-aos="zoom-in" data-aos-delay="300">
-            <div class="box">
-              <div class="icon" style="background: #e6fdfc;"><i class="ion-settings" style="color: #3fcdc7;"></i></div>
-              <h4 class="title">
-                Test Kit
-              </h4>
-              <p>The tools which used to test the patients for Coronavirus disease (COVID-19)</p>
-              <a href="manage-test-kit.html" class="btn btn-warning">
-                Manage Test Kit
-              </a>
+              <tr>
+                <td scope="row">TK-2</td>
+                <td>Fluid Test Kit</td>
+                <td><input
+                  type="number"
+                  name="stock"
+                  id="stock"
+                  class="form-control"
+                  pattern="^$|^([0-9]|[1-9][0-9]|[1][0][0])?"
+                  required
+                  placeholder="e.g. 1"></td>
+                <td><button class="btn"><i class="fa fa-trash"></button></td>
+                <td><button class="btn"><i class="fa fa-save"></button></td>
+              </tr>
 
-            </div>
-          </div>
+              <tr>
+                <td scope="row">TK-3</td>
+                <td>Flame Test Kit</td>
+                <td><input
+                  type="number"
+                  name="stock"
+                  id="stock"
+                  class="form-control"
+                  pattern="^$|^([0-9]|[1-9][0-9]|[1][0][0])?"
+                  required
+                  placeholder="e.g. 1"></td>
+                <td><button class="btn"><i class="fa fa-trash"></button></td>
+                <td><button class="btn"><i class="fa fa-save"></button></td>
+              </tr>
 
-      </div>
-
+            </tbody>
+        </table>
+          <br><br>
       </div>
     </section><!-- End Services Section -->
 
