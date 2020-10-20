@@ -94,7 +94,7 @@
             <div class="about-content" data-aos="fade-left" data-aos-delay="100">
               <h2>Record New Test</h2><br>
               <div class="form">
-
+                <form method="POST">
                     <div class="form-group">
                       <input type="text" name="patientUname" class="form-control" id="patientUname" placeholder="Patient's Username" required/>
                       <small class="form-text text-muted">Please Enter Patient's username.</small>
@@ -112,31 +112,52 @@
 
                     <div class="form-group">
                       <div class="dropdown">
-                        <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <button class="btn btn-info dropdown-toggle" type="button" id="patientType" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                           Patient Type
+                          <span class ="caret"></span>
                         </button>
                         <small class="form-text text-muted">Please select at least <b> ONE </b> patient type</small>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                          <a class="dropdown-item" href="#">Returnee</a>
-                          <a class="dropdown-item" href="#">Quarantined</a>
-                          <a class="dropdown-item" href="#">Suspected</a>
-                          <a class="dropdown-item" href="#">Infected</a>
-                          <a class="dropdown-item" href="#">Close Contact</a>
-                        </div>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                          <li><a data-value="action">Returnee</a></li>
+                          <li><a data-value="another action">Quarantined</a></li>
+                          <li><a data-value="something else here">Close Contact</a></li>
+                          <li><a data-value="separated link">Infected</a></li>
+                          <li><a data-value="separated link">Suspected</a></li>
+                        </ul>
                       </div>
                     </div><br>
 
+                      <p style = "text-align : left;">Patient Types:</p>
+                        <label class="checkbox-inline" style ="padding-left:30px;">
+                          <input type="checkbox" value=""> &nbsp;Flu
+                        </label>
+                        <label class="checkbox-inline" style ="padding-left:30px;">
+                          <input type="checkbox" value=""> &nbsp;Cough
+                        </label>
+                        <label class="checkbox-inline" style ="padding-left:30px;">
+                          <input type="checkbox" value=""> &nbsp;Fever
+                        </label>
+                        <label class="checkbox-inline" style ="padding-left:30px;">
+                          <input type="checkbox" value=""> &nbsp;Cold
+                        </label>
+                        <label class="checkbox-inline" style ="padding-left:30px;">
+                          <input type="checkbox" value=""> &nbsp;Sore Throat
+                        </label><br>
+
                     <div class="form-group">
-                      <small class="form-text text-muted">Please Enter Patient Symptom :</small>
+                      <input type="text" name="patientName" class="form-control" id="patientName" placeholder="Other:"/>
+                      <small class="form-text text-muted">Other Symptoms (if any)</small>
                     </div><br>
 
-                      <div class="text-center"><button type="submit">Create</button></div>
+                      <div class="text-center"><button id="submitButton" name="submitForm" type="submit" onclick="return verifyForm()">Record</button></div>
                       <br><br>
+
 
               <ul>
                 <li><i class="ion-android-checkmark-circle"></i> Registered Patients are displayed below.</li>
               </ul>
             </div>
+          </form>
           </div>
         </div>
       </div>
@@ -154,40 +175,48 @@
         <table class="table">
             <thead>
               <tr>
-                <th scope="col">Patient's Username</th>
-                <th scope="col">Patient's Password</th>
-                <th scope="col">Patient's Fullname</th>
+                <th scope="col">Test ID</th>
+                <th scope="col">Username</th>
+                <th scope="col">Password</th>
+                <th scope="col">Fullname</th>
                 <th scope="col">Patient Type</th>
                 <th scope="col">Patient Symptom</th>
                 <th scope="col">Test Status</th>
+                <th scope="col">Test Date</th>
               </tr>
             </thead>
             <tbody>
               <tr>
+                <td>T-001</td>
                 <td>Patient01</td>
                 <td>*********</td>
                 <td>Lee Keat Hong</td>
-                <td>Gay</td>
-                <td>AIDs</td>
+                <td>Returnee</td>
+                <td>Flu, Cough</td>
                 <td>Pending</td>
+                <td>23/10/2020</td>
               </tr>
 
               <tr>
+                <td>T-002</td>
                 <td>Patient02</td>
                 <td>*********</td>
                 <td>Chai Zi Ming</td>
-                <td>HOT</td>
-                <td>All girls get wet</td>
+                <td>Close Contact</td>
+                <td>None</td>
                 <td>Pending</td>
+                <td>23/10/2020</td>
               </tr>
 
               <tr>
+                <td>T-003</td>
                 <td>Patient03</td>
                 <td>*********</td>
                 <td>Han Vui Ern</td>
-                <td>Attractive</td>
-                <td>Only boys get wet</td>
+                <td>Suspected</td>
+                <td>Fever, Stomach Ache</td>
                 <td>Pending</td>
+                <td>23/10/2020</td>
               </tr>
             </tbody>
         </table>
@@ -209,7 +238,7 @@
               <div class="col-sm-6">
 
                 <div class="footer-info">
-                  <h3>Rapid</h3>
+                  <h3>CTIS</h3>
                   <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita valies darta donna mare fermentum iaculis eu non diam phasellus. Scelerisque felis imperdiet proin fermentum leo. Amet volutpat consequat mauris nunc congue.</p>
                 </div>
 
@@ -304,11 +333,7 @@
 
     <div class="container">
       <div class="copyright">
-        &copy; Copyright <strong>Rapid</strong>. All Rights Reserved
-      </div>
-      <div class="credits">
-
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+        &copy; Copyright <strong>CTIS</strong>. All Rights Reserved
       </div>
     </div>
   </footer><!-- End  Footer -->
@@ -329,6 +354,49 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+  <script>
+
+  $( document ).ready(function() {
+  $('.dropdown').each(function (key, dropdown) {
+      var $dropdown = $(dropdown);
+      $dropdown.find('.dropdown-menu a').on('click', function () {
+          $dropdown.find('button').text($(this).text()).append(' <span class="caret"></span>');
+      });
+  });
+});
+
+  function verifyForm(){
+    var username= document.getElementById('patientUname').value;
+    var password= document.getElementById('patientPassword').value;
+    var fullname= document.getElementById('patientName').value;
+    var patientType= document.getElementById('patientType').value;
+
+    if (username==""){
+      alert("Username cannot be blank.");
+      $("usernameText").focus();
+      return false;
+    }
+
+    if (password==""){
+      alert("Password cannot be blank.");
+      $("usernameText").focus();
+      return false;
+    }
+
+    if (fullname==""){
+      alert("Fullname cannot be blank.");
+      $("usernameText").focus();
+      return false;
+    }
+
+    if (patientType==null){
+      alert("Please select at least one patient type");
+      $("usernameText").focus();
+      return false;
+    }
+  }
+
+  </script>
 
 </body>
 
