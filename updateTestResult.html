@@ -65,7 +65,7 @@
           <h2>Covid Testing<br>Information <span>System</span></h2>
           <h3>Update Test Result</h3>
           <div>
-            <a href="#recordTester" class="btn-get-started scrollto">Proceed to Record a new Test</a>
+            <a href="#recordTester" class="btn-get-started scrollto">Proceed to Update Test Results</a>
           </div>
         </div>
 
@@ -78,240 +78,152 @@
 
   <main id="main">
 
-    <!-- ======= About Section ======= -->
-    <section id="recordTester" class="about">
-
-      <div class="container" data-aos="fade-up">
-        <div class="row">
-
-          <div class="col-lg-5 col-md-6">
-            <div class="about-img" data-aos="fade-right" data-aos-delay="100">
-              <img src="assets/img/report.jpg" alt="">
-            </div>
-          </div>
-
-          <div class="col-lg-7 col-md-6">
-            <div class="about-content" data-aos="fade-left" data-aos-delay="100">
-              <h2>Record New Test</h2><br>
-              <div class="form">
-
-                    <div class="form-group">
-                      <input type="text" name="patientUname" class="form-control" id="patientUname" placeholder="Patient's Username" required/>
-                      <small class="form-text text-muted">Please Enter Patient's username.</small>
-                    </div><br>
-
-                    <div class="form-group">
-                      <input type="password" name="patientPassword" class="form-control" id="patientPassword" placeholder="Patient's Password"/>
-                      <small class="form-text text-muted">Please Enter Patient's password.</small>
-                    </div><br>
-
-                    <div class="form-group">
-                      <input type="text" name="patientName" class="form-control" id="patientName" placeholder="Patient's Fullname"/>
-                      <small class="form-text text-muted">Please Enter Patient's fullname.</small>
-                    </div><br>
-
-                    <div class="form-group">
-                      <div class="dropdown">
-                        <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          Patient Type
-                        </button>
-                        <small class="form-text text-muted">Please select at least <b> ONE </b> patient type</small>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                          <a class="dropdown-item" href="#">Returnee</a>
-                          <a class="dropdown-item" href="#">Quarantined</a>
-                          <a class="dropdown-item" href="#">Suspected</a>
-                          <a class="dropdown-item" href="#">Infected</a>
-                          <a class="dropdown-item" href="#">Close Contact</a>
-                        </div>
-                      </div>
-                    </div><br>
-
-                    <div class="form-group">
-                      <small class="form-text text-muted">Please Enter Patient Symptom :</small>
-                    </div><br>
-
-                      <div class="text-center"><button type="submit">Create</button></div>
-                      <br><br>
-
-              <ul>
-                <li><i class="ion-android-checkmark-circle"></i> Registered Patients are displayed below.</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </section><!-- End About Section -->
-
-    <!-- ======= Services Section ======= -->
+    <!-- ======= Update test report Section ======= -->
     <section id="viewRecord" class="services section-bg">
       <div class="container" data-aos="fade-up">
+        <div class="row">
+          <div class="col-sm-12">
+            <header class="section-header">
+              <h3>Update Test Result</h3>
+            </header>
+            <div class="text-center">
+              <form action="">
+                <input type="text" placeholder="Search Test ID..." name="search">
+                <button type="submit"><i class="fa fa-search"></i></button>
+              </form>
+            </div>
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Test ID</th>
+                    <th scope="col">Username</th>
+                    <th scope="col">Password</th>
+                    <th scope="col">Fullname</th>
+                    <th scope="col">Patient Type</th>
+                    <th scope="col">Symptoms</th>
+                    <th scope="col">Test Status</th>
+                    <th scope="col">Test Date</th>
+                    <th scope="col">Test Result</th>
+                    <th scope="col">Result Date</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>TE-001</td>
+                    <td>Patient01</td>
+                    <td>*********</td>
+                    <td>Lee Keat Hong</td>
+                    <td>Returnee</td>
+                    <td>Cough</td>
+                    <td>Pending</td>
+                    <td>23/10/2020</td>
+                    <td>
+                      <input type="text" placeholder="Result" name="result">
+                      <button type="button" class="btn btn-warning">Update</button>
+                    </td>
+                    <td>26/10/2020</button></td>
+                  </tr>
 
-        <header class="section-header">
-          <h3>Recorded New Test</h3>
-        </header>
+                  <tr>
+                    <td>TE-002</td>
+                    <td>Patient02</td>
+                    <td>*********</td>
+                    <td>Chai Zi Ming</td>
+                    <td>Close Contact</td>
+                    <td>None</td>
+                    <td>Pending</td>
+                    <td>24/10/2020</td>
+                    <td>
+                      <input type="text" placeholder="Result" name="result">
+                      <button type="button" class="btn btn-warning">Update</button>
+                    </td>
+                    <td>27/10/2010</td>
+                  </tr>
 
-        <table class="table">
-            <thead>
-              <tr>
-                <th scope="col">Patient's Username</th>
-                <th scope="col">Patient's Password</th>
-                <th scope="col">Patient's Fullname</th>
-                <th scope="col">Patient Type</th>
-                <th scope="col">Patient Symptom</th>
-                <th scope="col">Test Status</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Patient01</td>
-                <td>*********</td>
-                <td>Lee Keat Hong</td>
-                <td>Gay</td>
-                <td>AIDs</td>
-                <td>Pending</td>
-              </tr>
-
-              <tr>
-                <td>Patient02</td>
-                <td>*********</td>
-                <td>Chai Zi Ming</td>
-                <td>HOT</td>
-                <td>All girls get wet</td>
-                <td>Pending</td>
-              </tr>
-
-              <tr>
-                <td>Patient03</td>
-                <td>*********</td>
-                <td>Han Vui Ern</td>
-                <td>Attractive</td>
-                <td>Only boys get wet</td>
-                <td>Pending</td>
-              </tr>
-            </tbody>
-        </table>
-
+                  <tr>
+                    <td>TE-003</td>
+                    <td>Patient03</td>
+                    <td>*********</td>
+                    <td>Han Vui Ern</td>
+                    <td>Infected</td>
+                    <td>Flu, fever</td>
+                    <td>Pending</td>
+                    <td>26/10/2020</td>
+                    <td>
+                      <input type="text" placeholder="Result" name="result">
+                      <button type="button" class="btn btn-warning">Update</button>
+                    </td>
+                    <td>28/10/2020</button></td>
+                  </tr>
+                </tbody>
+            </table>
+          </div>
+        </div>
       </div>
     </section><!-- End Services Section -->
 
-  <!-- ======= Footer ======= -->
-  <footer id="footer" class="section-bg">
-    <div class="footer-top">
-      <div class="container">
+    <!-- ======= Footer ======= -->
+    <footer id="footer" class="section-bg">
+      <div class="footer-top">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-sm-6">
 
-        <div class="row">
+                  <div class="footer-info">
+                    <h3>CTIS</h3>
+                    <p>There are many Covid-19 test centres that have been set up to manage Covid-19 testing. A
+                        Covid Testing Information System (CTIS) is required that to allow the health ministry to keep
+                        track of tests that have been performed by the various test centres.
+                    </p>
+                  </div>
 
-          <div class="col-lg-6">
+                  <div class="footer-newsletter">
+                    <h4>Covid-19</h4>
+                    <p>Coronavirus disease (COVID-19) is an infectious disease caused by a newly discovered coronavirus.
+                      Most people infected with the COVID-19 virus will experience mild to moderate respiratory illness and recover without requiring special treatment.
+                    </p>
+                  </div>
 
-            <div class="row">
-
-              <div class="col-sm-6">
-
-                <div class="footer-info">
-                  <h3>Rapid</h3>
-                  <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita valies darta donna mare fermentum iaculis eu non diam phasellus. Scelerisque felis imperdiet proin fermentum leo. Amet volutpat consequat mauris nunc congue.</p>
                 </div>
 
-                <div class="footer-newsletter">
-                  <h4>Our Newsletter</h4>
-                  <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna veniam enim veniam illum dolore legam minim quorum culpa amet magna export quem.</p>
-                  <form action="" method="post">
-                    <input type="email" name="email"><input type="submit" value="Subscribe">
-                  </form>
-                </div>
+                <div class="col-sm-6">
+                  <div class="footer-links">
+                    <h4>Pages</h4>
+                    <ul>
+                      <li><a href="TCOhomepage.html">Register Test Center</a></li>
+                      <li><a href="record-tester.html">Record Tester</a></li>
+                      <li><a href="testReportTCO.html">generateTestReport</a></li>
+                    </ul>
+                  </div>
 
-              </div>
+                  <div class="footer-links">
+                    <h4>Contact Us</h4>
+                    <p>
+                      <strong>Address : </strong>No. 15, Jalan Sri Semantan 1, Off, Jalan Semantan<br>
+                      Bukit Damansara, 50490<br>
+                      Kuala Lumpur<br>
+                      <strong>Phone : </strong>012-123-4567<br>
+                      <strong>Email : </strong>CTIS@gmail.com<br>
+                    </p>
+                  </div>
 
-              <div class="col-sm-6">
-                <div class="footer-links">
-                  <h4>Useful Links</h4>
-                  <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#about">About us</a></li>
-                    <li><a href="#">Services</a></li>
-                    <li><a href="#">Terms of service</a></li>
-                    <li><a href="#">Privacy policy</a></li>
-                  </ul>
-                </div>
-
-                <div class="footer-links">
-                  <h4>Contact Us</h4>
-                  <p>
-                    A108 Adam Street <br>
-                    New York, NY 535022<br>
-                    United States <br>
-                    <strong>Phone:</strong> +1 5589 55488 55<br>
-                    <strong>Email:</strong> info@example.com<br>
-                  </p>
-                </div>
-
-                <div class="social-links">
-                  <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
-                  <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
-                  <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
-                  <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
                 </div>
 
               </div>
-
-            </div>
-
-          </div>
-
-          <div class="col-lg-6">
-
-            <div class="form">
-
-              <h4>Send us a message</h4>
-              <p>Eos ipsa est voluptates. Nostrum nam libero ipsa vero. Debitis quasi sit eaque numquam similique commodi harum aut temporibus.</p>
-
-              <form action="forms/contact.php" method="post" role="form" class="php-email-form">
-                <div class="form-group">
-                  <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
-                  <div class="validate"></div>
-                </div>
-                <div class="form-group">
-                  <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
-                  <div class="validate"></div>
-                </div>
-                <div class="form-group">
-                  <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
-                  <div class="validate"></div>
-                </div>
-                <div class="form-group">
-                  <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
-                  <div class="validate"></div>
-                </div>
-
-                <div class="mb-3">
-                  <div class="loading">Loading</div>
-                  <div class="error-message"></div>
-                  <div class="sent-message">Your message has been sent. Thank you!</div>
-                </div>
-
-                <div class="text-center"><button type="submit" title="Send Message">Send Message</button></div>
-              </form>
 
             </div>
 
           </div>
 
         </div>
-
       </div>
-    </div>
 
-    <div class="container">
-      <div class="copyright">
-        &copy; Copyright <strong>Rapid</strong>. All Rights Reserved
+      <div class="container">
+        <div class="copyright">
+          &copy; Copyright <strong>CTIS</strong>. All Rights Reserved
+        </div>
       </div>
-      <div class="credits">
-
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-      </div>
-    </div>
-  </footer><!-- End  Footer -->
+    </footer><!-- End  Footer -->
 
   <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
 
