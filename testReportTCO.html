@@ -44,10 +44,10 @@
           <li class="drop-down"><a href="">Actions</a>
             <ul>
               <li><a href="index.html">Home</a></li>
-              <li><a href="TCOhomepage.html">Register Test Center</a></li>
+              <li><a href="#registerTC">Register Test Center</a></li>
               <li><a href="record-tester.html">Record Tester</a></li>
-              <li class="active"><a href="#manageTK">Manage Test Kit Stock</a></li>
-              <li class="active"><a href="#manageTK">Generate Test Report</a></li>
+              <li><a href="manage-test-kit.html">Manage Test Kit Stock</a></li>
+              <li class="active"><a href="testReportTCO.html">Generate Test Report</a></li>
             </ul>
           </li>
           <li><a href="#footer">Contact Us</a></li>
@@ -64,14 +64,14 @@
       <div class="row justify-content-center align-self-center" data-aos="fade-up">
         <div class="col-md-6 intro-info order-md-first order-last" data-aos="zoom-in" data-aos-delay="100">
           <h2>Covid Testing<br>Information <span>System</span></h2>
-          <h3>Manage Test Kit</h3>
+          <h3>Generate Test Report</h3>
           <div>
-            <a href="#manageTK" class="btn-get-started scrollto">Proceed to Managing Test Kit Stocks</a>
+            <a href="#registerTC" class="btn-get-started scrollto">Get started by generating test report</a>
           </div>
         </div>
 
         <div class="col-md-6 intro-img order-md-last order-first" data-aos="zoom-out" data-aos-delay="200">
-          <img src="assets/img/test_kit.png" alt="" class="img-fluid">
+          <img src="assets/img/ctis.png" alt="" class="img-fluid">
         </div>
       </div>
 
@@ -81,47 +81,53 @@
   <main id="main">
 
     <!-- ======= About Section ======= -->
-    <section id="manageTK" class="about">
+    <section id="registerTC" class="about">
 
       <div class="container" data-aos="fade-up">
         <div class="row">
 
           <div class="col-lg-5 col-md-6">
             <div class="about-img" data-aos="fade-right" data-aos-delay="100">
-              <img src="assets/img/test-kit.jpg" alt="">
+              <img src="assets/img/mask.jpg" alt="">
             </div>
           </div>
 
           <div class="col-lg-7 col-md-6">
             <div class="about-content" data-aos="fade-left" data-aos-delay="100">
-              <h2>Add Test Kit Stock</h2><br>
+              <h2>Register New Test Center</h2><br>
               <div class="form">
                     <div class="form-group">
-                      <input type="text" name="name" class="form-control" id="name" placeholder="Test Kit name"/>
-                      <small class="form-text text-muted">Please enter Test Kit name.</small>
+                      <input type="text" name="name" class="form-control" id="name" placeholder="Test Center Name"/>
+                      <small class="form-text text-muted">Please enter Test Center name.</small>
                     </div>
-
-                    <div class="form-group">
-                      <input
-                        type="number"
-                        name="stock"
-                        id="stock"
-                        class="form-control"
-                        pattern="^$|^([0-9]|[1-9][0-9]|[1][0][0])?"
-                        required
-                        placeholder="e.g. 1">
-                      <small class="form-text text-muted">Please enter the amount for this test kit.</small>
                     </div>
-
-                    </div>
-                      <div class="text-center"><button href ="#">Add Test Kit</button></div>
+                      <div class="text-center"><button href ="#">Register</button></div>
                       <br><br><br><br>
 
-
+              <h2>Registered Test Center</h2>
+              <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">Test Center ID</th>
+                      <th scope="col">Test Center Name</th>
+                      <th scope="col">Edit</th>
+                      <th scope="col">Delete</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td scope="row">TC-1</td>
+                      <td>Sunway Test Center</td>
+                      <td><button class="btn"><i class="fa fa-edit"></button></td>
+                      <td><button class="btn"><i class="fa fa-trash"></button></td>
+                    </tr>
+                  </tbody>
+              </table>
+                <br><br>
 
               <ul>
+                <li><i class="ion-android-checkmark-circle"></i> Only <b>ONE</b> Test Center is allowed for each Test Center Officer.</li>
                 <li><i class="ion-android-checkmark-circle"></i> Test Center Name should be entered wisely. Changes are currently <b>NOT</b> available.</li>
-                <li><i class="ion-android-checkmark-circle"></i> To edit or delete any test kits, click <a href ="#addDelete"> here </a></li>
               </ul>
             </div>
           </div>
@@ -131,76 +137,46 @@
     </section><!-- End About Section -->
 
     <!-- ======= Services Section ======= -->
-    <section id="addDelete" class="services section-bg">
+    <section id="services" class="services section-bg">
       <div class="container" data-aos="fade-up">
 
         <header class="section-header">
-          <h3>Manage Test Kit Stocks</h3><br>
+          <h3>What you can do with us?</h3>
         </header>
 
-        <table class="table">
-            <thead>
-              <tr>
-                <th scope="col">Test Kit ID</th>
-                <th scope="col">Test Kit Name</th>
-                <th scope="col">Stock</th>
-                <th scope="col">Delete</th>
-                <th scope="col">Save</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td scope="row">TK-1</td>
-                <td>Blood Test Test Kit</td>
-                <td><input
-                  type="number"
-                  name="stock"
-                  id="stock"
-                  class="form-control"
-                  pattern="^$|^([0-9]|[1-9][0-9]|[1][0][0])?"
-                  required
-                  placeholder="e.g. 1"></td>
-                <td><button class="btn"><i class="fa fa-trash"></button></td>
-                <td><button class="btn"><i class="fa fa-save"></button></td>
-              </tr>
+        <div class="row">
+          <div class="col-sm-6" data-aos="zoom-in" data-aos-delay="200">
+            <div class="box">
+              <div class="icon" style="background: #fff0da;"><i class="ion-android-clipboard" style="color: #e98e06;"></i></div>
+              <h4 class="title">
+                Tester
+              </h4>
+              <p>The person who do medical check up on the patients, mostly finding out for Coronavirus disease (COVID-19) infection</p>
+              <a href="record-tester.html" class="btn btn-warning">
+                Record Tester
+              </a>
+            </div>
+          </div>
 
-              <tr>
-                <td scope="row">TK-2</td>
-                <td>Fluid Test Kit</td>
-                <td><input
-                  type="number"
-                  name="stock"
-                  id="stock"
-                  class="form-control"
-                  pattern="^$|^([0-9]|[1-9][0-9]|[1][0][0])?"
-                  required
-                  placeholder="e.g. 1"></td>
-                <td><button class="btn"><i class="fa fa-trash"></button></td>
-                <td><button class="btn"><i class="fa fa-save"></button></td>
-              </tr>
+          <div class="col-sm-6" data-aos="zoom-in" data-aos-delay="300">
+            <div class="box">
+              <div class="icon" style="background: #e6fdfc;"><i class="ion-settings" style="color: #3fcdc7;"></i></div>
+              <h4 class="title">
+                Test Kit
+              </h4>
+              <p>The tools which used to test the patients for Coronavirus disease (COVID-19)</p>
+              <a href="manage-test-kit.html" class="btn btn-warning">
+                Manage Test Kit
+              </a>
 
-              <tr>
-                <td scope="row">TK-3</td>
-                <td>Flame Test Kit</td>
-                <td><input
-                  type="number"
-                  name="stock"
-                  id="stock"
-                  class="form-control"
-                  pattern="^$|^([0-9]|[1-9][0-9]|[1][0][0])?"
-                  required
-                  placeholder="e.g. 1"></td>
-                <td><button class="btn"><i class="fa fa-trash"></button></td>
-                <td><button class="btn"><i class="fa fa-save"></button></td>
-              </tr>
+            </div>
+          </div>
 
-            </tbody>
-        </table>
-          <br><br>
+      </div>
+
       </div>
     </section><!-- End Services Section -->
-
-  </main><!-- End #main -->
+    <hr>
 
   <!-- ======= Footer ======= -->
   <footer id="footer" class="section-bg">
@@ -311,11 +287,14 @@
 
     <div class="container">
       <div class="copyright">
-        &copy; Copyright <strong>CTIS</strong>. All Rights Reserved
+        &copy; Copyright <strong>Rapid</strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+
+        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
       </div>
     </div>
-  </footer>
-  <!-- End  Footer -->
+  </footer><!-- End  Footer -->
 
   <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
 
