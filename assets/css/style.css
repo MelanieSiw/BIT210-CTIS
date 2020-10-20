@@ -2059,18 +2059,18 @@ section {
   line-height: 26px;
 }
 
-#footer .footer-top .footer-newsletter {
+#footer .footer-top .footer-covid {
   margin-bottom: 30px;
 }
 
-#footer .footer-top .footer-newsletter input[type="email"] {
+#footer .footer-top .footer-covid input[type="email"] {
   border: 0;
   padding: 6px 8px;
   width: 65%;
   border: 1px solid #d9dde6;
 }
 
-#footer .footer-top .footer-newsletter input[type="submit"] {
+#footer .footer-top .footer-covid input[type="submit"] {
   background: #1bb1dc;
   border: 1px solid #1bb1dc;
   width: 35%;
@@ -2081,7 +2081,7 @@ section {
   cursor: pointer;
 }
 
-#footer .footer-top .footer-newsletter input[type="submit"]:hover {
+#footer .footer-top .footer-covid input[type="submit"]:hover {
   background: #0a98c0;
 }
 
@@ -2202,7 +2202,7 @@ button:hover {
 
 #footer .copyright {
   text-align: center;
-  padding-top: 30px;
+  padding-top: 0px;
   color: #535074;
   font-size: 15px;
 }
