@@ -69,7 +69,7 @@
         </div>
 
         <div class="col-md-6 intro-img order-md-last order-first" data-aos="zoom-out" data-aos-delay="200">
-          <img src="assets/img/newTest.jpg" alt="" class="img-fluid">
+          <img src="assets/img/newTest.png" alt="" class="img-fluid">
         </div>
       </div>
     </div>
@@ -110,16 +110,19 @@
                     </div><br>
 
                     <div class="form-group">
-                      <form action="/action_page.php">
-                        <small class="form-text text-muted">Please Choose Patient Type :</small>
-                        <select id="type" name="cars">
-                          <option value="volvo">Returnee</option>
-                          <option value="saab">Quarantined</option>
-                          <option value="fiat">Closed Contact</option>
-                          <option value="audi">Infected</option>
-                          <option value="audi">Suspected</option>
-                        </select>
-                      </form>
+                      <div class="dropdown">
+                        <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Patient Type
+                        </button>
+                        <small class="form-text text-muted">Please select at least <b> ONE </b> patient type</small>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                          <a class="dropdown-item" href="#">Returnee</a>
+                          <a class="dropdown-item" href="#">Quarantined</a>
+                          <a class="dropdown-item" href="#">Suspected</a>
+                          <a class="dropdown-item" href="#">Infected</a>
+                          <a class="dropdown-item" href="#">Close Contact</a>
+                        </div>
+                      </div>
                     </div><br>
 
                     <div class="form-group">
