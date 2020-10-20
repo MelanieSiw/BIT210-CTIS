@@ -1,3 +1,37 @@
+//Validation
+function verifyForm(){
+      var username= document.getElementById('patientUname').value;
+      var password= document.getElementById('patientPassword').value;
+      var fullname= document.getElementById('patientName').value;
+
+      if (username==""){
+        alert("Username cannot be blank.");
+        $("patientUname").focus();
+        return false;
+      }
+
+      if (password==""){
+        alert("Password cannot be blank.");
+        $("patientPassword").focus();
+        return false;
+      }
+
+      if (fullname==""){
+        alert("Fullname cannot be blank.");
+        $("patientName").focus();
+        return false;
+      }
+  }
+
+  $( document ).ready(function() {
+    $('.dropdown').each(function (key, dropdown) {
+        var $dropdown = $(dropdown);
+        $dropdown.find('.dropdown-menu a').on('click', function () {
+            $dropdown.find('button').text($(this).text()).append(' <span class="caret"></span>');
+        });
+    });
+});
+
 (function($) {
   "use strict";
 

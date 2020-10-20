@@ -79,7 +79,7 @@
   <main id="main">
 
     <!-- ======= About Section ======= -->
-    <section id="recordTester" class="about">
+    <section id="recordNewTest" class="about">
 
       <div class="container" data-aos="fade-up">
         <div class="row">
@@ -94,7 +94,7 @@
             <div class="about-content" data-aos="fade-left" data-aos-delay="100">
               <h2>Record New Test</h2><br>
               <div class="form">
-
+                <form method="POST">
                     <div class="form-group">
                       <input type="text" name="patientUname" class="form-control" id="patientUname" placeholder="Patient's Username" required/>
                       <small class="form-text text-muted">Please Enter Patient's username.</small>
@@ -112,25 +112,45 @@
 
                     <div class="form-group">
                       <div class="dropdown">
-                        <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <button class="dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                           Patient Type
+                          <span class="caret"></span>
                         </button>
                         <small class="form-text text-muted">Please select at least <b> ONE </b> patient type</small>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                          <a class="dropdown-item" href="#">Returnee</a>
-                          <a class="dropdown-item" href="#">Quarantined</a>
-                          <a class="dropdown-item" href="#">Suspected</a>
-                          <a class="dropdown-item" href="#">Infected</a>
-                          <a class="dropdown-item" href="#">Close Contact</a>
-                        </div>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                          <li><a data-value="returnee">Returnee</a></li>
+                          <li><a data-value="quarantined">Quarantined</a></li>
+                          <li><a data-value="infected">Infected</a></li>
+                          <li><a data-value="suspected">Suspected</a></li>
+                          <li><a data-value="close contact">Close Contact</a></li>
+                        </ul>
                       </div>
                     </div><br>
 
                     <div class="form-group">
-                      <small class="form-text text-muted">Please Enter Patient Symptom :</small>
+                        <p>Patient Symptoms:</p>
+                          <label class="checkbox-inline" style = "padding-left:30px;">
+                            <input type="checkbox" value=""> Flu
+                          </label>
+                          <label class="checkbox-inline" style = "padding-left:30px;">
+                            <input type="checkbox" value=""> Cough
+                          </label>
+                          <label class="checkbox-inline" style = "padding-left:30px;">
+                            <input type="checkbox" value=""> Fever
+                          </label>
+                          <label class="checkbox-inline" style = "padding-left:30px;">
+                            <input type="checkbox" value=""> Cold
+                          </label>
+                          <label class="checkbox-inline" style = "padding-left:30px;">
+                            <input type="checkbox" value=""> Sore Throat
+                          </label><br><br>
+
+                    <div class="form-group">
+                      <input type="text" name="patientUname" class="form-control" id="patientUname" placeholder="Other" required/>
+                      <small class="form-text text-muted">Other symptoms (if any)</small>
                     </div><br>
 
-                      <div class="text-center"><button type="submit">Create</button></div>
+                      <div class="text-center"><button id="submitButton" name="submitForm" type="submit" onclick="return verifyForm()">Record</button></div>
                       <br><br>
 
               <ul>
@@ -138,6 +158,7 @@
               </ul>
             </div>
           </div>
+        </form>
         </div>
       </div>
 
@@ -154,40 +175,56 @@
         <table class="table">
             <thead>
               <tr>
-                <th scope="col">Patient's Username</th>
-                <th scope="col">Patient's Password</th>
-                <th scope="col">Patient's Fullname</th>
+                <th scope="col">Test ID</th>
+                <th scope="col">Username</th>
+                <th scope="col">Password</th>
+                <th scope="col">Fullname</th>
                 <th scope="col">Patient Type</th>
-                <th scope="col">Patient Symptom</th>
+                <th scope="col">Symptoms</th>
                 <th scope="col">Test Status</th>
+                <th scope="col">Test Date</th>
+                <th scope="col">Edit</th>
+                <th scope="col">Delete</th>
               </tr>
             </thead>
             <tbody>
               <tr>
+                <td>TE-001</td>
                 <td>Patient01</td>
                 <td>*********</td>
                 <td>Lee Keat Hong</td>
-                <td>Gay</td>
-                <td>AIDs</td>
+                <td>Returnee</td>
+                <td>Cough</td>
                 <td>Pending</td>
+                <td>23/10/2020</td>
+                <td><button class="btn"><i class="fa fa-edit"></button></td>
+                <td><button class="btn"><i class="fa fa-trash"></button></td>
               </tr>
 
               <tr>
+                <td>TE-002</td>
                 <td>Patient02</td>
                 <td>*********</td>
                 <td>Chai Zi Ming</td>
-                <td>HOT</td>
-                <td>All girls get wet</td>
+                <td>Close Contact</td>
+                <td>None</td>
                 <td>Pending</td>
+                <td>24/10/2020</td>
+                <td><button class="btn"><i class="fa fa-edit"></button></td>
+                <td><button class="btn"><i class="fa fa-trash"></button></td>
               </tr>
 
               <tr>
+                <td>TE-003</td>
                 <td>Patient03</td>
                 <td>*********</td>
                 <td>Han Vui Ern</td>
-                <td>Attractive</td>
-                <td>Only boys get wet</td>
+                <td>Infected</td>
+                <td>Flu, fever</td>
                 <td>Pending</td>
+                <td>26/10/2020</td>
+                <td><button class="btn"><i class="fa fa-edit"></button></td>
+                <td><button class="btn"><i class="fa fa-trash"></button></td>
               </tr>
             </tbody>
         </table>
@@ -327,7 +364,7 @@
   <script src="assets/vendor/waypoints/jquery.waypoints.min.js"></script>
   <script src="assets/vendor/aos/aos.js"></script>
 
-  <!-- Template Main JS File -->
+  <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
 
 </body>

@@ -744,6 +744,84 @@ section {
   transition: .5s;
 }
 
+/* Manage Test Kit Section
+--------------------------------*/
+#recordNewTest {
+  padding: 80px 0;
+}
+
+#recordNewTest .about-content {
+  padding-top: 40px;
+}
+
+#recordNewTest .about-content h2 {
+  color: #413e66;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+}
+
+#recordNewTest .about-content h3 {
+  color: #696592;
+  font-weight: 400;
+  font-size: 22px;
+  font-style: italic;
+}
+
+#recordNewTest .about-content ul {
+  list-style: none;
+  padding: 0;
+}
+
+#recordNewTest .about-content ul li {
+  padding-bottom: 10px;
+}
+
+#recordNewTest .about-content ul li i {
+  font-size: 20px;
+  padding-right: 4px;
+  color: #1bb1dc;
+}
+
+#recordNewTest .about-img {
+  position: relative;
+  margin: 30px 30px 30px 30px;
+}
+
+#recordNewTest .about-img img {
+  width: 100%;
+  border: 8px solid #fff;
+  transition: .5s;
+}
+
+#recordNewTest .about-img img:hover {
+  width: 100%;
+  transform: scale(1.03);
+}
+
+#recordNewTest .about-img::before {
+  position: absolute;
+  left: -31px;
+  top: -30px;
+  width: 90%;
+  height: 92%;
+  z-index: -1;
+  content: '';
+  background-color: #ebf1fa;
+  transition: .5s;
+}
+
+#recordNewTest .about-img::after {
+  position: absolute;
+  right: -31px;
+  bottom: -30px;
+  width: 90%;
+  height: 92%;
+  z-index: -1;
+  content: '';
+  background-color: #ebf1fa;
+  transition: .5s;
+}
+
 /* Add or delete test kit Section
 --------------------------------*/
 #addDelete {
