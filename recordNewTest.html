@@ -43,7 +43,6 @@
           <li><a href="#">Welcome back, Tester</a></li>
           <li class="drop-down"><a href="">Actions</a>
             <ul>
-              <li><a href="index.html">Home</a></li>
               <li class="active"><a href="#recordNewTest">Record New Test</a></li>
               <li><a href="updateTestResult.html">Update Test Result</a></li>
               <li><a href="testReportTester.html">Generate Test Report</a></li>
@@ -65,7 +64,7 @@
           <h2>Covid Testing<br>Information <span>System</span></h2>
           <h3>Record New Test</h3>
           <div>
-            <a href="#recordTester" class="btn-get-started scrollto">Proceed to Record a new Test</a>
+            <a href="#recordNewTest" class="btn-get-started scrollto">Proceed to Record a new Test</a>
           </div>
         </div>
 
@@ -172,7 +171,11 @@
             <header class="section-header">
               <h3>Recorded New Test</h3>
             </header>
-
+            <div class="text-center">
+              <form action="">
+                <input class = "form-control" type="text" placeholder="Search Test ID..." name="search" id="search">
+              </form>
+            </div>
             <table class="table">
                 <thead>
                   <tr>
@@ -188,7 +191,7 @@
                     <th scope="col">Delete</th>
                   </tr>
                 </thead>
-                <tbody>
+                <tbody id="searchingTable">
                   <tr>
                     <td>TE-001</td>
                     <td>Patient01</td>

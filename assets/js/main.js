@@ -1,8 +1,76 @@
+//Login Validation
+var objManager = [
+  {
+    username: "Manager",
+    password: "manager01"
+  }
+]
+
+var objTester = [
+  {
+    username: "Tester",
+    password: "tester01"
+  }
+]
+
+var objPatient = [
+  {
+    username: "Patient",
+    password: "patient01"
+  }
+]
+
+function getInfo(){
+  var usernameLogin = document.getElementById("usernameLogin").value
+  var passwordLogin = document.getElementById("passwordLogin").value
+
+  if (usernameLogin==""){
+    alert("Please enter username");
+    $("usernameLogin").focus();
+    return false;
+  }
+
+  if (passwordLogin==""){
+    alert("Please enter password");
+    $("passwordLogin").focus();
+    return false;
+  }
+
+  for (i = 0; i < objManager.length; i++){
+    if(usernameLogin == objManager[i].username && passwordLogin == objManager[i].password){
+      window.location.replace("TCOhomepage.html")
+    }
+    //else {
+      //alert("Username or password incorrect");
+    //}
+  }
+
+  for (i = 0; i < objTester.length; i++){
+    if(usernameLogin == objTester[i].username && passwordLogin == objTester[i].password){
+      window.location.replace("recordNewTest.html")
+    }
+    //else {
+    //  alert('Username or password incorrect');
+    //  window.location.replace("loginNew.html")
+  //  }
+  }
+
+  for (i = 0; i < objPatient.length; i++){
+    if(usernameLogin == objPatient[i].username && passwordLogin == objPatient[i].password){
+      window.location.replace("patientHomepage.html")
+    }
+    //else {
+      //alert('Username or password incorrect');
+    //  window.location.replace("loginNew.html")
+    //}
+  }
+}
+
 //Validation
 function verifyForm(){
-      var username= document.getElementById('patientUname').value;
-      var password= document.getElementById('patientPassword').value;
-      var fullname= document.getElementById('patientName').value;
+      var username = document.getElementById('patientUname').value;
+      var password = document.getElementById('patientPassword').value;
+      var fullname = document.getElementById('patientName').value;
 
       if (username==""){
         alert("Username cannot be blank.");
@@ -21,8 +89,82 @@ function verifyForm(){
         $("patientName").focus();
         return false;
       }
+
+
+
   }
 
+//Validation for register test Center
+function verifyTC(){
+  var name = document.getElementById('tcName').value;
+
+  if (name==""){
+    alert("Please enter a name to register test center.");
+    $("patientName").focus();
+    return false;
+  }
+}
+
+//Validation for recording a new testers
+function verifyTester(){
+  var testerUsername = document.getElementById('testerUname').value;
+  var testerPassword = document.getElementById('testerPassword').value;
+  var testerName = document.getElementById('testerName').value;
+
+  if (testerUsername==""){
+    alert("Please create tester's username.");
+    $("testerUname").focus();
+    return false;
+  }
+
+  if (testerPassword==""){
+    alert("Please create tester's password.");
+    $("testerPassword").focus();
+    return false;
+  }
+
+  if (testerName==""){
+    alert("Please enter tester's fullname.");
+    $("testerName").focus();
+    return false;
+  }
+}
+
+//Function to validate test kit Stock
+function verifyTestKit(){
+  var testkitName = document.getElementById('testkitName').value;
+  var testkitStock = document.getElementById('stock').value;
+
+  if (testkitName==""){
+    alert("Please enter Test Kit name.");
+    $("testkitName").focus();
+    return false;
+  }
+
+  if (testkitStock==""){
+    alert("Please enter the amount of stock.");
+    $("stock").focus();
+    return false;
+  }
+
+  if (testkitStock < 0){
+    alert("Test Kit stock amount should be more than 0.");
+    $("stock").focus();
+    return false;
+  }
+}
+
+//Function to verify Test Kit from table
+function verifyTestKitEdit(){
+  var testkitStockEdit = document.getElementById('stockEdit').value;
+
+  if (testkitStockEdit < 0){
+    alert("Test Kit stock amount should be more than 0.");
+    $("stockEdit").focus();
+    return false;
+  }
+}
+//Function to filter table
   $( document ).ready(function() {
     $('.dropdown').each(function (key, dropdown) {
         var $dropdown = $(dropdown);

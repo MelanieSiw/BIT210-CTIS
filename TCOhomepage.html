@@ -43,7 +43,6 @@
           <li><a href="#">Welcome back, Test Center Manager</a></li>
           <li class="drop-down"><a href="">Actions</a>
             <ul>
-              <li><a href="index.html">Home</a></li>
               <li class="active"><a href="#registerTC">Register Test Center</a></li>
               <li><a href="record-tester.html">Record Tester</a></li>
               <li><a href="manage-test-kit.html">Manage Test Kit Stock</a></li>
@@ -97,11 +96,11 @@
               <h2>Register New Test Center</h2><br>
               <div class="form">
                     <div class="form-group">
-                      <input type="text" name="name" class="form-control" id="name" placeholder="Test Center Name"/>
+                      <input type="text" name="name" class="form-control" id="tcName" placeholder="Test Center Name"/>
                       <small class="form-text text-muted">Please enter Test Center name.</small>
                     </div>
                     </div>
-                      <div class="text-center"><button href ="#">Register</button></div>
+                      <div class="text-center"><button onclick = "verifyTC()">Register</button></div>
                       <br><br><br><br>
 
               <h2>Registered Test Center</h2>

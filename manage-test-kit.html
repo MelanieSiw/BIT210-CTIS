@@ -97,7 +97,7 @@
               <h2>Add Test Kit Stock</h2><br>
               <div class="form">
                     <div class="form-group">
-                      <input type="text" name="name" class="form-control" id="name" placeholder="Test Kit name"/>
+                      <input type="text" name="name" class="form-control" id="testkitName" placeholder="Test Kit name"/>
                       <small class="form-text text-muted">Please enter Test Kit name.</small>
                     </div>
 
@@ -114,14 +114,14 @@
                     </div>
 
                     </div>
-                      <div class="text-center"><button href ="#">Add Test Kit</button></div>
+                      <div class="text-center"><button onclick = verifyTestKit()>Add Test Kit</button></div>
                       <br><br><br><br>
 
 
 
               <ul>
                 <li><i class="ion-android-checkmark-circle"></i> Test Center Name should be entered wisely. Changes are currently <b>NOT</b> available.</li>
-                <li><i class="ion-android-checkmark-circle"></i> To edit or delete any test kits, click <a href ="#addDelete"> here </a></li>
+                <li><i class="ion-android-checkmark-circle"></i> To edit or delete any test kits, please proceed to the table <b>below</b>. </a></li>
               </ul>
             </div>
           </div>
@@ -160,13 +160,13 @@
                 <td><input
                   type="number"
                   name="stock"
-                  id="stock"
+                  id="stockEdit"
                   class="form-control"
                   pattern="^$|^([0-9]|[1-9][0-9]|[1][0][0])?"
                   required
                   placeholder="e.g. 1"></td>
                 <td><button class="btn"><i class="fa fa-trash"></button></td>
-                <td><button class="btn"><i class="fa fa-save"></button></td>
+                <td><button class="btn" onclick = verifyTestKitEdit()><i class="fa fa-save"></button></td>
               </tr>
 
               <tr>
@@ -175,13 +175,13 @@
                 <td><input
                   type="number"
                   name="stock"
-                  id="stock"
+                  id="stockEdit"
                   class="form-control"
                   pattern="^$|^([0-9]|[1-9][0-9]|[1][0][0])?"
                   required
                   placeholder="e.g. 1"></td>
                 <td><button class="btn"><i class="fa fa-trash"></button></td>
-                <td><button class="btn"><i class="fa fa-save"></button></td>
+                <td><button class="btn" onclick = verifyTestKitEdit()><i class="fa fa-save"></button></td>
               </tr>
 
               <tr>
@@ -190,13 +190,13 @@
                 <td><input
                   type="number"
                   name="stock"
-                  id="stock"
+                  id="stockEdit"
                   class="form-control"
                   pattern="^$|^([0-9]|[1-9][0-9]|[1][0][0])?"
                   required
                   placeholder="e.g. 1"></td>
                 <td><button class="btn"><i class="fa fa-trash"></button></td>
-                <td><button class="btn"><i class="fa fa-save"></button></td>
+                <td><button class="btn" onclick = verifyTestKitEdit()><i class="fa fa-save"></button></td>
               </tr>
 
             </tbody>
