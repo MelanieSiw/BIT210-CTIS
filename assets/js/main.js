@@ -164,7 +164,7 @@ function verifyTestKitEdit(){
     return false;
   }
 }
-//Function to filter table
+//Function to display selected options on dropdown list
   $( document ).ready(function() {
     $('.dropdown').each(function (key, dropdown) {
         var $dropdown = $(dropdown);
@@ -174,6 +174,7 @@ function verifyTestKitEdit(){
     });
 });
 
+//Function to filter table
 $(document).ready(function(){
   $("#search").on("keyup", function() {
     var value = $(this).val().toLowerCase();
