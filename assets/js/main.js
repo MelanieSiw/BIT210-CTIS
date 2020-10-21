@@ -32,6 +32,15 @@ function verifyForm(){
     });
 });
 
+$(document).ready(function(){
+  $("#search").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#searchingTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+
 (function($) {
   "use strict";
 
