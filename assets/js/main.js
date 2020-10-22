@@ -90,7 +90,9 @@ function verifyForm(){
         return false;
       }
 
-
+      if (username != "" && password != "" && fullname != ""){
+        alert ("Test recorded successfully")
+      }
 
   }
 
@@ -102,6 +104,10 @@ function verifyTC(){
     alert("Please enter a name to register test center.");
     $("patientName").focus();
     return false;
+  }
+
+  if (name != ""){
+    alert ("Test Center registered successfully");
   }
 }
 
@@ -128,6 +134,10 @@ function verifyTester(){
     $("testerName").focus();
     return false;
   }
+
+  if (testerUsername != "" && testerPassword != "" && testerName != ""){
+    alert("Tester addedd successfully!");
+  }
 }
 
 //Function to validate test kit Stock
@@ -151,6 +161,10 @@ function verifyTestKit(){
     alert("Test Kit stock amount should be more than 0.");
     $("stock").focus();
     return false;
+  }
+
+  if (testkitName != "" && testkitStock > 0){
+    alert("Test Kit added successfully");
   }
 }
 
@@ -332,68 +346,6 @@ $(document).ready(function(){
     });
   });
 
-  // jQuery counterUp (used in Whu Us section)
-  $('[data-toggle="counter-up"]').counterUp({
-    delay: 10,
-    time: 1000
-  });
-
-  // Porfolio isotope and filter
-  $(window).on('load', function() {
-    var portfolioIsotope = $('.portfolio-container').isotope({
-      itemSelector: '.portfolio-item'
-    });
-    $('#portfolio-flters li').on('click', function() {
-      $("#portfolio-flters li").removeClass('filter-active');
-      $(this).addClass('filter-active');
-
-      portfolioIsotope.isotope({
-        filter: $(this).data('filter')
-      });
-      aos_init();
-    });
-  });
-
-  // Initiate venobox (lightbox feature used in portofilo)
-  $(document).ready(function() {
-    $('.venobox').venobox({
-      'share': false
-    });
-  });
-
-  // Testimonials carousel (uses the Owl Carousel library)
-  $(".testimonials-carousel").owlCarousel({
-    autoplay: true,
-    dots: true,
-    loop: true,
-    items: 1
-  });
-
-  // Clients carousel (uses the Owl Carousel library)
-  $(".clients-carousel").owlCarousel({
-    autoplay: true,
-    dots: true,
-    loop: true,
-    responsive: {
-      0: {
-        items: 2
-      },
-      768: {
-        items: 4
-      },
-      900: {
-        items: 6
-      }
-    }
-  });
-
-  // Portfolio details carousel
-  $(".portfolio-details-carousel").owlCarousel({
-    autoplay: true,
-    dots: true,
-    loop: true,
-    items: 1
-  });
 
   // Init AOS
   function aos_init() {
