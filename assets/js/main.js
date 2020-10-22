@@ -40,29 +40,18 @@ function getInfo(){
     if(usernameLogin == objManager[i].username && passwordLogin == objManager[i].password){
       window.location.replace("TCOhomepage.html")
     }
-    //else {
-      //alert("Username or password incorrect");
-    //}
   }
 
   for (i = 0; i < objTester.length; i++){
     if(usernameLogin == objTester[i].username && passwordLogin == objTester[i].password){
       window.location.replace("recordNewTest.html")
     }
-    //else {
-    //  alert('Username or password incorrect');
-    //  window.location.replace("loginNew.html")
-  //  }
   }
 
   for (i = 0; i < objPatient.length; i++){
     if(usernameLogin == objPatient[i].username && passwordLogin == objPatient[i].password){
       window.location.replace("patientHomepage.html")
     }
-    //else {
-      //alert('Username or password incorrect');
-    //  window.location.replace("loginNew.html")
-    //}
   }
 }
 
@@ -178,15 +167,6 @@ function verifyTestKitEdit(){
     return false;
   }
 }
-//Function to display selected options on dropdown list
-  $( document ).ready(function() {
-    $('.dropdown').each(function (key, dropdown) {
-        var $dropdown = $(dropdown);
-        $dropdown.find('.dropdown-menu a').on('click', function () {
-            $dropdown.find('button').text($(this).text()).append(' <span class="caret"></span>');
-        });
-    });
-});
 
 //Function to filter table
 $(document).ready(function(){
@@ -197,6 +177,17 @@ $(document).ready(function(){
     });
   });
 });
+
+//Function to display selected options on dropdown list
+  $( document ).ready(function() {
+    $('.dropdown').each(function (key, dropdown) {
+        var $dropdown = $(dropdown);
+        $dropdown.find('.dropdown-menu a').on('click', function () {
+            $dropdown.find('button').text($(this).text()).append(' <span class="caret"></span>');
+        });
+    });
+});
+
 
 (function($) {
   "use strict";
