@@ -1130,7 +1130,7 @@ section {
 }
 
 #login_button:hover {
-  background: #0a98c0;
+  filter:brightness(80%);
   cursor: pointer;
 }
 
