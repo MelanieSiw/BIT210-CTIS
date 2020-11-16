@@ -1,3 +1,31 @@
+<?php
+
+session_start();
+
+$msg ='';
+$mysqli = new mysqli('localhost', 'root', '', 'ctisdb') or die(mysqli_error($mysqli));
+
+$centreName ='';
+
+if (isset($_POST['submitForm'])){
+  $centreName = $_POST['centreName'];
+
+  $centreName = mysqli_real_escape_string($mysqli, $_POST['centreName']);
+  $check_duplicate = "SELECT centreName from TestCentre where centreName = '$centreName'";
+  $result = mysqli_query($mysqli, $check_duplicate);
+  $count = mysqli_num_rows($result);
+
+  if($count > 0){
+    echo "<script>alert('Test Centre name has been taken')</script>";
+  }else {
+    $mysqli->query("INSERT INTO TestCentre (centreName) VALUES ("$centreName")") or
+    die ($mysqli->error);
+  }
+}
+
+ ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -98,7 +126,7 @@
                       <small class="form-text text-muted">Please enter Test Center name.</small>
                     </div>
                     </div>
-                      <div class="text-center"><button onclick = "verifyTC()">Register</button></div>
+                      <div class="text-center"><button id = "submitButton" name = "submitForm" type ="submit" onclick = "verifyTC()">Register</button></div>
                       <br><br><br><br>
 
               <h2>Registered Test Center</h2>
