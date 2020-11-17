@@ -1,15 +1,9 @@
 <?php
-$mysqli = new mysqli('localhost', 'root', '', 'ctisdb') or die(mysqli_error($mysqli));
 
 session_start();
 
-include_once 'ctisdb.php';
-include_once 'sessionCheck.php';
-
-  $sql = "SELECT * FROM User WHERE username ='" . $_SESSION["current_user"] . "'";
-  $result = mysqli_query($con, $sql);
-  $userArr = mysqli_fetch_array($result);
-  $manager_username = $userArr['username'];
+$msg ='';
+$mysqli = new mysqli('localhost', 'root', '', 'ctisdb') or die(mysqli_error($mysqli));
 
 $centreName ='';
 
@@ -24,7 +18,7 @@ if (isset($_POST['submitForm'])){
   if($count > 0){
     echo "<script>alert('Test Centre name has been taken')</script>";
   }else {
-    $mysqli->query("INSERT INTO TestCentre (centreName, manager_username) VALUES ('$centreName', '$manager_username')") or
+    $mysqli->query("INSERT INTO TestCentre (centreName) VALUES ('$centreName')") or
     die ($mysqli->error);
   }
 }
@@ -44,21 +38,21 @@ if (isset($_POST['submitForm'])){
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="../assets/img/logo.png" rel="icon">
+  <link href="assets/img/logo.png" rel="icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Montserrat:300,400,500,600,700" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
-  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="../assets/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-  <link href="../assets/vendor/ionicons/css/ionicons.min.css" rel="stylesheet">
-  <link href="../assets/vendor/venobox/venobox.css" rel="stylesheet">
-  <link href="../assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
-  <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link href="assets/vendor/ionicons/css/ionicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/venobox/venobox.css" rel="stylesheet">
+  <link href="assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
 
   <!-- Connect to Main CSS File -->
-  <link href="../assets/css/style.css" rel="stylesheet">
+  <link href="assets/css/style.css" rel="stylesheet">
 
 </head>
 
@@ -68,21 +62,21 @@ if (isset($_POST['submitForm'])){
   <header id="header" class="fixed-top header-transparent">
     <div class="container d-flex align-items-center">
 
-      <h1 class="logo mr-auto"><a href="TCOhomepage.php"><img src="../assets/img/logo.png" alt="logoCTIS" width="60px" height="auto">CTIS</a></h1>
+      <h1 class="logo mr-auto"><a href="TCOhomepage.html"><img src="assets/img/logo.png" alt="logoCTIS" width="60px" height="auto">CTIS</a></h1>
 
       <nav class="main-nav d-none d-lg-block">
         <ul>
-          <li><a href="#">Welcome back, <?php echo $userArr['username']; ?></a></li>
+          <li><a href="#">Welcome back, Test Center Manager</a></li>
           <li class="drop-down"><a href="">Actions</a>
             <ul>
               <li class="active"><a href="#registerTC">Register Test Center</a></li>
-              <li><a href="record-tester.php">Record Tester</a></li>
-              <li><a href="manage-test-kit.php">Manage Test Kit Stock</a></li>
-              <li><a href="testReportTCO.php">Generate Test Report</a></li>
+              <li><a href="record-tester.html">Record Tester</a></li>
+              <li><a href="manage-test-kit.html">Manage Test Kit Stock</a></li>
+              <li><a href="testReportTCO.html">Generate Test Report</a></li>
             </ul>
           </li>
           <li><a href="#footer">Contact Us</a></li>
-          <li><a href="loginNew.php">Log Out</a></li>
+          <li><a href="loginNew.html">Log Out</a></li>
         </ul>
       </nav><!-- .main-nav-->
 
@@ -102,7 +96,7 @@ if (isset($_POST['submitForm'])){
         </div>
 
         <div class="col-md-6 intro-img order-md-last order-first" data-aos="zoom-out" data-aos-delay="200">
-          <img src="../assets/img/ctis.png" alt="" class="img-fluid">
+          <img src="assets/img/ctis.png" alt="" class="img-fluid">
         </div>
       </div>
 
@@ -112,7 +106,6 @@ if (isset($_POST['submitForm'])){
   <main id="main">
 
     <!-- ======= Register Test Center Section ======= -->
-    <form action = "TCOhomepage.php" method ="POST">
     <section id="registerTC" class="about">
 
       <div class="container" data-aos="fade-up">
@@ -120,7 +113,7 @@ if (isset($_POST['submitForm'])){
 
           <div class="col-lg-5 col-md-6">
             <div class="about-img" data-aos="fade-right" data-aos-delay="100">
-              <img src="../assets/img/mask.jpg" alt="">
+              <img src="assets/img/mask.jpg" alt="">
             </div>
           </div>
 
@@ -129,19 +122,12 @@ if (isset($_POST['submitForm'])){
               <h2>Register New Test Center</h2><br>
               <div class="form">
                     <div class="form-group">
-                      <input type="text" name="centreName" value="<?= isset($_POST['centerName']) ? $_POST['centreName'] : ''; ?>" class="form-control" id="tcName" placeholder="Test Center Name"/>
+                      <input type="text" name="name" class="form-control" id="tcName" placeholder="Test Center Name"/>
                       <small class="form-text text-muted">Please enter Test Center name.</small>
                     </div>
                     </div>
-                      <div class="text-center"><button id="submitButton" name="submitForm" type="submit" onclick = "verifyTC()">Register</button></div>
-
+                      <div class="text-center"><button id = "submitButton" name = "submitForm" type ="submit" onclick = "verifyTC()">Register</button></div>
                       <br><br><br><br>
-                      </form>
-
-              <?php
-                $mysqli = new mysqli ('localhost', 'root', '', 'ctisdb') or die (mysqli_error($mysqli));
-                $result = $mysqli->query("SELECT * FROM TestCentre WHERE manager_username='" . $_SESSION["current_user"] . "'") or die ($mysqli->error);
-               ?>
 
               <h2>Registered Test Center</h2>
               <table class="table">
@@ -153,17 +139,13 @@ if (isset($_POST['submitForm'])){
                       <th scope="col">Delete</th>
                     </tr>
                   </thead>
-                  <?php
-                    while($row = $result->fetch_assoc()):
-                   ?>
                   <tbody>
                     <tr>
-                      <td><?php echo $row['centreID'] ?></td>
-                      <td><?php echo $row['centreName'] ?></td>
+                      <td scope="row">TC-1</td>
+                      <td>Sunway Test Center</td>
                       <td><button class="btn"><i class="fa fa-edit"></button></td>
                       <td><button class="btn"><i class="fa fa-trash"></button></td>
                     </tr>
-                  <?php endwhile; ?>
                   </tbody>
               </table>
                 <br><br>
@@ -261,10 +243,10 @@ if (isset($_POST['submitForm'])){
                   <div class="footer-links">
                     <h4>Pages</h4>
                     <ul>
-                      <li><a href="TCOhomepage.php">Register Test Center</a></li>
-                      <li><a href="record-tester.php">Record Tester</a></li>
-                      <li><a href="manage-test-kit.php">Manage Test Kit</a></li>
-                      <li><a href="testReportTCO.php">Generate Test Report</a></li>
+                      <li><a href="TCOhomepage.html">Register Test Center</a></li>
+                      <li><a href="record-tester.html">Record Tester</a></li>
+                      <li><a href="manage-test-kit.html">Manage Test Kit</a></li>
+                      <li><a href="testReportTCO.html">Generate Test Report</a></li>
                     </ul>
                   </div>
 
@@ -300,19 +282,19 @@ if (isset($_POST['submitForm'])){
   <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
 
   <!-- Vendor JS Files -->
-  <script src="../assets/vendor/jquery/jquery.min.js"></script>
-  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="../assets/vendor/jquery.easing/jquery.easing.min.js"></script>
-  <script src="../assets/vendor/php-email-form/validate.js"></script>
-  <script src="../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="../assets/vendor/counterup/counterup.min.js"></script>
-  <script src="../assets/vendor/venobox/venobox.min.js"></script>
-  <script src="../assets/vendor/owl.carousel/owl.carousel.min.js"></script>
-  <script src="../assets/vendor/waypoints/jquery.waypoints.min.js"></script>
-  <script src="../assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/jquery/jquery.min.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/counterup/counterup.min.js"></script>
+  <script src="assets/vendor/venobox/venobox.min.js"></script>
+  <script src="assets/vendor/owl.carousel/owl.carousel.min.js"></script>
+  <script src="assets/vendor/waypoints/jquery.waypoints.min.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
 
   <!-- Template Main JS File -->
-  <script src="../assets/js/main.js"></script>
+  <script src="assets/js/main.js"></script>
 
 </body>
 
