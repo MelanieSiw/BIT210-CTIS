@@ -1,3 +1,14 @@
+<?php
+  session_start();
+
+  include_once 'ctisdb.php';
+  include_once 'sessionCheck.php';
+
+  $sql = "SELECT * FROM User WHERE username ='" . $_SESSION["current_user"] . "'";
+  $result = mysqli_query($con, $sql);
+  $userArr = mysqli_fetch_array($result);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -39,7 +50,7 @@
 
       <nav class="main-nav d-none d-lg-block">
         <ul>
-          <li><a href="#">Welcome back, Test Center Manager</a></li>
+          <li><a href="#">Welcome back, <?php echo $userArr['username']; ?></a></li>
           <li class="drop-down"><a href="">Actions</a>
             <ul>
               <li><a href="TCOhomepage.php">Register Test Center</a></li>
@@ -85,6 +96,11 @@
               <h3>Test Report</h3>
             </header>
 
+            <?php
+              $mysqli = new mysqli('localhost','root','','ctisdb') or die(mysqli_error($mysqli));
+              $resultReport = $mysqli->query("SELECT * FROM covidTest WHERE userType ='t' AND registeredBy='" . $_SESSION["current_user"] . "'") or die ($mysqli->error);
+              ?>
+
             <div style="overflow-x:auto;">
               <table class="table">
                 <thead>
@@ -100,6 +116,10 @@
                   </tr>
                 </thead>
 
+                <?php
+                while($rowReport = $resultReport->fetch_assoc()):
+                ?>
+
                 <tbody>
                   <tr>
                     <td>TE-001</td>
@@ -109,17 +129,6 @@
                     <td>Lee Keat Hong</td>
                     <td>Negative</td>
                     <td>23/10/2020</td>
-                    <td>Completed</th>
-                  </tr>
-
-                  <tr>
-                    <td>TE-002</td>
-                    <td>T001</td>
-                    <td>22/10/2020</td>
-                    <td>Patient02</td>
-                    <td>Han Vui Ern</td>
-                    <td>Positive</td>
-                    <td>25/10/2020</td>
                     <td>Completed</th>
                   </tr>
                 </tbody>

@@ -1,3 +1,51 @@
+<?php
+
+$mysqli = new mysqli('localhost', 'root', '', 'ctisdb') or die(mysqli_error($mysqli));
+
+session_start();
+
+include_once 'ctisdb.php';
+include_once 'sessionCheck.php';
+
+$sql = "SELECT * FROM User WHERE username ='" . $_SESSION["current_user"] . "'";
+$result = mysqli_query($con, $sql);
+$userArr = mysqli_fetch_array($result);
+$tester_username = $userArr['username'];
+
+$username = '';
+$password = '';
+$fullname = '';
+$patientType = '';
+$symptoms = '';
+$testDate = date("Y-m-d");
+
+if(isset($_POST['submitForm'])){
+  $username = $_POST['patientUname'];
+  $password = $_POST['patientPassword'];
+  $fullname = $_POST['patientName'];
+  $patientType = $_POST['patientType'];
+  $symptoms = $_POST['symptoms'];
+  $symptomsImplode = implode (', ' , $symptoms);
+  $testDate = date("Y-m-d");
+
+  $username = mysqli_real_escape_string($mysqli, $_POST['patientUname']);
+  $check_duplicate = "SELECT username from User where username = '$username'";
+  $result = mysqli_query($mysqli, $check_duplicate);
+  $count = mysqli_num_rows($result);
+
+  if($count > 0){
+    echo "<script>alert('Username has been taken')</script>";
+  } else {
+    $mysqli->query("INSERT INTO User (username, password, fullname, patientType, symptoms, userType, registeredBy) VALUES ('$username', '$password', '$fullname', '$patientType', '$symptomsImplode', 'p', '$tester_username')");
+    $mysqli->query("INSERT INTO covidTest (testDate, result, status, tester_username, patient_username) VALUES ('$testDate', 'in progress', 'pending', '$tester_username', '$username')");
+    header("location: recordNewTest.php");
+  }
+
+}
+
+ ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -38,7 +86,7 @@
 
       <nav class="main-nav d-none d-lg-block">
         <ul>
-          <li><a href="#">Welcome back, Tester</a></li>
+          <li><a href="#">Welcome back, <?php echo $userArr['username']; ?></a></li>
           <li class="drop-down"><a href="">Actions</a>
             <ul>
               <li class="active"><a href="#recordNewTest">Record New Test</a></li>
@@ -108,8 +156,17 @@
                     </div><br>
 
                     <div class="form-group">
-                      <div class="dropdown">
-                        <button class="dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                      <select id="patientType" name="patientType">
+                        <option value="0" disabled>Patient Type</option>
+                        <option value="Returnee">Returnee</option>
+                        <option value="Quarantined">Quarantined</option>
+                        <option value="Infected">Infected</option>
+                        <option value="Suspected">Suspected</option>
+                        <option value="Clost Contact">Close Contact</option>
+                      </select>
+
+                    <!--  <div class="dropdown">
+                        <button class="dropdown-toggle" name="patientType" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                           Patient Type
                           <span class="caret"></span>
                         </button>
@@ -122,28 +179,53 @@
                           <li><a data-value="close contact">Close Contact</a></li>
                         </ul>
                       </div>
-                    </div><br>
+                    </div><br> -->
+
 
                     <div class="form-group">
                         <p>Patient Symptoms:</p>
-                          <label class="checkbox-inline" style = "padding-left:30px;">
-                            <input type="checkbox" value=""> Flu
-                          </label>
-                          <label class="checkbox-inline" style = "padding-left:30px;">
-                            <input type="checkbox" value=""> Cough
-                          </label>
-                          <label class="checkbox-inline" style = "padding-left:30px;">
-                            <input type="checkbox" value=""> Fever
-                          </label>
-                          <label class="checkbox-inline" style = "padding-left:30px;">
-                            <input type="checkbox" value=""> Cold
-                          </label>
-                          <label class="checkbox-inline" style = "padding-left:30px;">
-                            <input type="checkbox" value=""> Sore Throat
-                          </label><br><br>
+                        <div class="row">
+                        <div class="g-full-width--xs g-margin-b-20--xs g-margin-b-0--md"  style="padding-left:30px;">
+                              <div class="input-group">
+                                <div class="col-md-12">
+                              <div class="row">
+                                <div class="g-full-width--xs g-margin-b-20--xs g-margin-b-0--md"  style="padding-left:30px;">
+                                  <div class="input-group">
+                                    <div class="col-md-1 cell">
+                                    <input id="Flu" type="checkbox" name="symptoms[]" value = "Flu"> Flu
+                                  </div>
+                                  </div>
+                                </div>
+
+                          <div class="g-full-width--xs g-margin-b-20--xs g-margin-b-0--md"  style="padding-left:30px;">
+                                <div class="input-group">
+                                  <div class="col-md-1 cell">
+                                  <input id="Cough" type="checkbox" name="symptoms[]" value = "Cough" > Cough
+                                </div>
+                                </div>
+                              </div>
+                              <div class="g-full-width--xs g-margin-b-20--xs g-margin-b-0--md"  style="padding-left:30px;">
+                                    <div class="input-group">
+                                      <div class="col-md-1 cell">
+                                      <input id="Fever" type="checkbox" name="symptoms[]" value = "Fever" > Fever
+                                    </div>
+                                    </div>
+                                  </div>
+
+                                  <div class="g-full-width--xs g-margin-b-20--xs g-margin-b-0--md"  style="padding-left:30px;">
+                                        <div class="input-group">
+                                          <div class="col-md-1 cell">
+                                          <input id="Sore Throat" type="checkbox" name="symptoms[]" value = "Sore Throat" > Sore Throat
+                                        </div>
+                                        </div>
+                                      </div>
+                                  </div>
+                                    </div>
+                                  </div>
+                                      <br><br>
 
                     <div class="form-group">
-                      <input type="text" name="patientUname" class="form-control" id="patientUname" placeholder="Other"/>
+                      <input type="text" name = "symptoms[]" class="form-control" id="patientUname" placeholder="Other"/>
                       <small class="form-text text-muted">Other symptoms (if any)</small>
                     </div><br>
 
@@ -174,6 +256,10 @@
                 <input class = "form-control" type="text" placeholder="Search Test ID..." name="search" id="search">
               </form>
             </div>
+            <?php
+              $mysqli = new mysqli ('localhost', 'root', '', 'ctisdb') or die (mysqli_error($mysqli));
+              $result = $mysqli->query("SELECT * FROM User u, covidTest ct WHERE ct.tester_username='" . $_SESSION["current_user"] . "' AND u.userType = 'p' AND u.username = ct.patient_username") or die ($mysqli->error);
+             ?>
             <table class="table">
                 <thead>
                   <tr>
@@ -185,50 +271,25 @@
                     <th scope="col">Symptoms</th>
                     <th scope="col">Test Status</th>
                     <th scope="col">Test Date</th>
-                    <th scope="col">Edit</th>
-                    <th scope="col">Delete</th>
                   </tr>
                 </thead>
+                <?php
+                  while($rowTest = $result->fetch_assoc()):
+                 ?>
                 <tbody id="searchingTable">
                   <tr>
-                    <td>TE-001</td>
-                    <td>Patient01</td>
-                    <td>*********</td>
-                    <td>Lee Keat Hong</td>
-                    <td>Returnee</td>
-                    <td>Cough</td>
-                    <td>Pending</td>
-                    <td>23/10/2020</td>
-                    <td><button class="btn"><i class="fa fa-edit"></button></td>
-                    <td><button class="btn"><i class="fa fa-trash"></button></td>
+                    <td><?php echo $rowTest['testID'] ?></td>
+                    <td><?php echo $rowTest['patient_username'] ?></td>
+                    <td><?php echo $rowTest['password'] ?></td>
+                    <td><?php echo $rowTest['fullname'] ?></td>
+                    <td><?php echo $rowTest['patientType'] ?></td>
+                    <td><?php echo $rowTest['symptoms'] ?></td>
+                    <td><?php echo $rowTest['status'] ?></td>
+                    <td><?php echo $testDate ?></td>
                   </tr>
 
-                  <tr>
-                    <td>TE-002</td>
-                    <td>Patient02</td>
-                    <td>*********</td>
-                    <td>Chai Zi Ming</td>
-                    <td>Close Contact</td>
-                    <td>None</td>
-                    <td>Pending</td>
-                    <td>24/10/2020</td>
-                    <td><button class="btn"><i class="fa fa-edit"></button></td>
-                    <td><button class="btn"><i class="fa fa-trash"></button></td>
-                  </tr>
-
-                  <tr>
-                    <td>TE-003</td>
-                    <td>Patient03</td>
-                    <td>*********</td>
-                    <td>Han Vui Ern</td>
-                    <td>Infected</td>
-                    <td>Flu, fever</td>
-                    <td>Pending</td>
-                    <td>26/10/2020</td>
-                    <td><button class="btn"><i class="fa fa-edit"></button></td>
-                    <td><button class="btn"><i class="fa fa-trash"></button></td>
-                  </tr>
                 </tbody>
+                <?php endwhile; ?>
             </table>
           </div>
         </div>

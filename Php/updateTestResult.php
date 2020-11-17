@@ -33,12 +33,12 @@
   <!-- ======= Header ======= -->
   <header id="header" class="fixed-top header-transparent">
     <div class="container d-flex align-items-center">
-
-      <h1 class="logo mr-auto"><a href="TCOhomepage.html"><img src="assets/img/logo.png" alt="logoCTIS" width="60px" height="auto">CTIS</a></h1>
+      <?php include_once "update-test.php" ?>
+      <h1 class="logo mr-auto"><a href="TCOhomepage.html"><img src="../assets/img/logo.png" alt="logoCTIS" width="60px" height="auto">CTIS</a></h1>
 
       <nav class="main-nav d-none d-lg-block">
         <ul>
-          <li><a href="#">Welcome back, Tester</a></li>
+          <li><a href="#">Welcome back, <?php echo $userArr['username']; ?></a></li>
           <li class="drop-down"><a href="">Actions</a>
             <ul>
               <li><a href="recordNewTest.php">Record New Test</a></li>
@@ -83,12 +83,16 @@
             <header class="section-header">
               <h3>Update Test Result</h3>
             </header>
+            <?php require_once 'update-test.php'; ?>
             <div class="text-center">
               <form action="">
                 <input class = "form-control" type="text" placeholder="Search Test ID..." name="search" id="search">
               </form>
             </div>
             <table class="table">
+              <?php
+                $resultTest = $mysqli->query("SELECT testID, patient_username, patientType, symptoms, status, testDate, result, resultDate FROM User u, covidTest ct WHERE u.userType ='p' AND ct.patient_username = u.username AND ct.tester_username='" . $_SESSION["current_user"] . "'") or die ($mysqli->error);
+                ?>
                 <thead>
                   <tr>
                     <th scope="col">Test ID</th>
@@ -100,112 +104,90 @@
                     <th scope="col">Test Result</th>
                     <th scope="col">Result Date</th>
                     <th scope="col">Edit</th>
-                    <th scope="col">Delete</th>
                   </tr>
                 </thead>
                 <tbody id="searchingTable">
+                  <?php
+                  while($rowTest = $resultTest->fetch_assoc()):
+                  ?>
                   <tr>
-                    <td>TE-001</td>
-                    <td>Patient01</td>
-                    <td>Returnee</td>
-                    <td>Cough</td>
-                    <td>Pending</td>
-                    <td>23/10/2020</td>
-                    <td><div class="form-group">
-                      <div class="dropdown">
-                        <button class="dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                          Result
-                          <span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                          <li><a data-value="positive">Positive</a></li>
-                          <li><a data-value="negative">Negative</a></li>
-                        </ul>
-                      </div>
-                    </div></td>
-                    <td>Pending</button></td>
-                    <td><button class="btn"><i class="fa fa-edit"></button></td>
-                    <td><button class="btn"><i class="fa fa-trash"></button></td>
+                    <td><?php echo $rowTest['testID'] ?></td>
+                    <td><?php echo $rowTest['patient_username'] ?></td>
+                    <td><?php echo $rowTest['patientType'] ?></td>
+                    <td><?php echo $rowTest['symptoms'] ?></td>
+                    <td><?php echo $rowTest['status'] ?></td>
+                    <td><?php echo $rowTest['testDate'] ?></td>
+                    <td><?php echo $rowTest['result'] ?></td>
+                    <td><?php echo $rowTest['resultDate'] ?></td>
+                    <td><td><a href ="updateTestResult.php?edit=<?php echo $rowTest['testID'];?>"
+                      class="btn btn-info"><i class="fa fa-edit"></a></td></td>
                   </tr>
-
-                  <tr>
-                    <td>TE-002</td>
-                    <td>Patient02</td>
-                    <td>Close Contact</td>
-                    <td>None</td>
-                    <td>Completed</td>
-                    <td>24/10/2020</td>
-                    <td><div class="form-group">
-                      <div class="dropdown">
-                        <button class="dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                          Result
-                          <span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                          <li><a data-value="positive">Positive</a></li>
-                          <li><a data-value="negative">Negative</a></li>
-                        </ul>
-                      </div>
-                    </div></td>
-                    <td>27/10/2010</td>
-                    <td><button class="btn"><i class="fa fa-edit"></button></td>
-                    <td><button class="btn"><i class="fa fa-trash"></button></td>
-                  </tr>
-
-                  <tr>
-                    <td>TE-003</td>
-                    <td>Patient03</td>
-                    <td>Infected</td>
-                    <td>Flu, fever</td>
-                    <td>Pending</td>
-                    <td>26/10/2020</td>
-                    <td><div class="form-group">
-                      <div class="dropdown">
-                        <button class="dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                          Result
-                          <span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                          <li><a data-value="positive">Positive</a></li>
-                          <li><a data-value="negative">Negative</a></li>
-                        </ul>
-                      </div>
-                    </div></td>
-                    <td>Pending</button></td>
-                    <td><button class="btn"><i class="fa fa-edit"></button></td>
-                    <td><button class="btn"><i class="fa fa-trash"></button></td>
-                  </tr>
-
-                  <tr>
-                    <td>TE-004</td>
-                    <td>Patient04</td>
-                    <td>Suspected</td>
-                    <td>Flu, Fever, Cold</td>
-                    <td>Completed</td>
-                    <td>29/10/2020</td>
-                    <td><div class="form-group">
-                      <div class="dropdown">
-                        <button class="dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                          Result
-                          <span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                          <li><a data-value="positive">Positive</a></li>
-                          <li><a data-value="negative">Negative</a></li>
-                        </ul>
-                      </div>
-                    </div></td>
-                    <td>01/11/2020</button></td>
-                    <td><button class="btn"><i class="fa fa-edit"></button></td>
-                    <td><button class="btn"><i class="fa fa-trash"></button></td>
-                  </tr>
-
+                  <?php endwhile; ?>
                 </tbody>
             </table>
           </div>
         </div>
       </div>
+    </div>
     </section>
+
+    <div class="row">
+      <div class="col-lg-12 col-md-6">
+          <form action="update-test.php" method="post">
+            <input type="hidden" name="testID" value="<?php echo $testID ?>">
+            <div class="container" data-aos="fade-up">
+              <table class="table">
+              <thead><tr>
+            <th>
+                <input type="text" name="testID" class="form-control"
+                value="<?php echo $testID;?>" placeholder="i.e. plastic" disabled
+              <input type="text" name="testID" class="form-control"
+              value="<?php echo $testID;?>" placeholder="i.e. plastic" disabled>
+            </th>
+          </div>
+
+          <th>
+              <input type="text" name="patientUname" class="form-control"
+              value="<?php echo $username;?>" placeholder="i.e. plastic" disabled
+            <input type="text" name="patientUname" class="form-control"
+            value="<?php echo $username;?>" placeholder="i.e. plastic" disabled>
+          </th>
+
+          <th>
+              <input type="text" name="patientType" class="form-control"
+              value="<?php echo $patientType ;?>" placeholder="i.e. plastic" disabled
+            <input type="text" name="patientType" class="form-control"
+            value="<?php echo $patientType;?>" placeholder="i.e. plastic" disabled>
+          </th>
+
+          <th>
+              <input type="text" name="status" class="form-control"
+              value="<?php echo $status;?>" placeholder="i.e. plastic" disabled
+            <input type="text" name="status" class="form-control"
+            value="<?php echo $status;?>" placeholder="i.e. plastic" disabled>
+          </th>
+
+          <th>
+            <td><div class="form-group">
+              <select id="result" name="result">
+                <option value="0">Result</option>
+                <option value="Negative">Negative</option>
+                <option value="Positive">Positive</option>
+              </select></td>
+          </th>
+
+            <th>
+              <?php if ($update==true): ?>
+              <button type="submit" class="btn btn-info" name="update">Update</button>
+              <?php else: ?>
+                <button type="submit" class="btn btn-info" name="save">Save</button>
+                <?php endif; ?>
+            </th></tr>
+          </table>
+          </div>
+          </form>
+        </div>
+      </div>
 
     <!-- ======= Footer ======= -->
     <footer id="footer" class="section-bg">
