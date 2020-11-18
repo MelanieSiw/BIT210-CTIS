@@ -1,3 +1,19 @@
+<?php
+
+$mysqli = new mysqli('localhost', 'root', '', 'ctisdb') or die(mysqli_error($mysqli));
+
+session_start();
+include_once 'ctisdb.php';
+
+$sql = "SELECT(['patientType, symptoms']) FROM User WHERE username ='" . $_SESSION["current_user"] . "'";
+$result = mysqli_query($con, $sql);
+$userArr = mysqli_fetch_array($result);
+
+$patientType = '';
+$symptoms = '';
+$testDate = date("Y-m-d");
+ ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -39,7 +55,7 @@
 
       <nav class="main-nav d-none d-lg-block">
         <ul>
-          <li><a href="#">Welcome back, Patient</a></li>
+          <li><a href="#">Welcome back, <?php echo $userArr['username']; ?></a></li>
           <li><a href="#footer">Contact Us</a></li>
           <li><a href="loginNew.php">Log Out</a></li>
         </ul>
@@ -79,6 +95,10 @@
             <div class="about-content" data-aos="fade-left" data-aos-delay="100">
               <br><h2>View result and test history</h2><br>
               <div style="overflow-x:auto;">
+              <?php
+                $mysqli = new mysqli ('localhost', 'root', '', 'ctisdb') or die (mysqli_error($mysqli));
+                $result = $mysqli->query("SELECT * FROM User u, covidTest ct WHERE ct.tester_username='" . $_SESSION["current_user"] . "' AND u.userType = 'p' AND u.username = ct.patient_username") or die ($mysqli->error);
+              ?>
               <table class="table">
                   <thead>
                     <tr>
@@ -91,39 +111,20 @@
                       <th scope="col">Status</th>
                     </tr>
                   </thead>
-
-                  <tbody>
+                  <?php
+                    while($rowTest = $result->fetch_assoc()):
+                   ?>
+                  <tbody id="searchingTable">
                     <tr>
-                      <td scope="row">T001</td>
-                      <td>Close Contact</td>
-                      <td>Flu, Cough, Fever</td>
-                      <td>22/10/2020</td>
-                      <td>Pending</td>
-                      <td>Pending</td>
-                      <td>Pending</td>
+                      <td><?php echo $rowTest['testID'] ?></td>
+                      <td><?php echo $rowTest['patientType'] ?></td>
+                      <td><?php echo $rowTest['symptoms'] ?></td>
+                      <td><?php echo $rowTest['status'] ?></td>
+                      <td><?php echo $testDate ?></td>
                     </tr>
 
-                    <tr>
-                      <td scope="row">T002</td>
-                      <td>Suspected</td>
-                      <td>Flu, Cough, Fever</td>
-                      <td>29/10/2020</td>
-                      <td>Pending</td>
-                      <td>Pending</td>
-                      <td>Pending</td>
-                    </tr>
-
-                    <tr>
-                      <td scope="row">T003</td>
-                      <td>Infected</td>
-                      <td>Flu, Cough, Fever, Sore Throat</td>
-                      <td>11/11/2020</td>
-                      <td>Infected</td>
-                      <td>21/11/2020</td>
-                      <td>Completed</td>
-                    </tr>
                   </tbody>
-
+                  <?php endwhile; ?>
               </table>
                 <br><br>
             </div>

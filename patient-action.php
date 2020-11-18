@@ -1,0 +1,4 @@
+<?php
+
+$dbservername = "localhost";
+$dbUsername
