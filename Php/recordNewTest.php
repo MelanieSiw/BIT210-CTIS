@@ -86,7 +86,7 @@ if(isset($_POST['submitForm'])){
 
       <nav class="main-nav d-none d-lg-block">
         <ul>
-          <li><a href="#">Welcome back, <?php echo $userArr['username']; ?></a></li>
+          <li><a href="#">Welcome fuck horny back, <?php echo $userArr['username']; ?></a></li>
           <li class="drop-down"><a href="">Actions</a>
             <ul>
               <li class="active"><a href="#recordNewTest">Record New Test</a></li>

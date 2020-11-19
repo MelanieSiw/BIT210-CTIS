@@ -3,15 +3,45 @@
 $mysqli = new mysqli('localhost', 'root', '', 'ctisdb') or die(mysqli_error($mysqli));
 
 session_start();
-include_once 'ctisdb.php';
 
-$sql = "SELECT(['patientType, symptoms']) FROM User WHERE username ='" . $_SESSION["current_user"] . "'";
+include_once 'ctisdb.php';
+include_once 'sessionCheck.php';
+
+$sql = "SELECT * FROM User WHERE username ='" . $_SESSION["current_user"] . "'";
 $result = mysqli_query($con, $sql);
 $userArr = mysqli_fetch_array($result);
+$tester_username = $userArr['username'];
 
+$username = '';
+$password = '';
+$fullname = '';
 $patientType = '';
 $symptoms = '';
 $testDate = date("Y-m-d");
+
+if(isset($_POST['submitForm'])){
+  $username = $_POST['patientUname'];
+  $password = $_POST['patientPassword'];
+  $fullname = $_POST['patientName'];
+  $patientType = $_POST['patientType'];
+  $symptoms = $_POST['symptoms'];
+  $symptomsImplode = implode (', ' , $symptoms);
+  $testDate = date("Y-m-d");
+
+  $username = mysqli_real_escape_string($mysqli, $_POST['patientUname']);
+  $check_duplicate = "SELECT username from User where username = '$username'";
+  $result = mysqli_query($mysqli, $check_duplicate);
+  $count = mysqli_num_rows($result);
+
+  if($count > 0){
+    echo "<script>alert('Username has been taken')</script>";
+  } else {
+    $mysqli->query("INSERT INTO User (username, password, fullname, patientType, symptoms, userType, registeredBy) VALUES ('$username', '$password', '$fullname', '$patientType', '$symptomsImplode', 'p', '$tester_username')");
+    $mysqli->query("INSERT INTO covidTest (testDate, result, status, tester_username, patient_username) VALUES ('$testDate', 'in progress', 'pending', '$tester_username', '$username')");
+    header("location: recordNewTest.php");
+  }
+
+}
  ?>
 
 <!DOCTYPE html>
