@@ -6,21 +6,12 @@ session_start();
 include_once 'ctisdb.php';
 include_once 'sessionCheck.php';
 
-$sql = "SELECT(['patientType, symptoms']) FROM User WHERE username ='" . $_SESSION["current_user"] . "'";
 
-$sql = "SELECT * FROM covidTest WHERE username ='" . $_SESSION["current_user"] . "'";
+$sql = "SELECT * FROM User WHERE username ='" . $_SESSION["current_user"] . "'";
 $result = mysqli_query($con, $sql);
 $userArr = mysqli_fetch_array($result);
-$patient_username = $userArr['username'];
 
-$patientType = '';
-$symptoms = '';
-$testDate = date("Y-m-d");
-$result = '';
-$resultDate = date("Y-m-d");
-$status = '';
-
- ?>
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -105,7 +96,7 @@ $status = '';
               <div style="overflow-x:auto;">
               <?php
                 $mysqli = new mysqli ('localhost', 'root', '', 'ctisdb') or die (mysqli_error($mysqli));
-                $result = $mysqli->query("SELECT * FROM User u, covidTest ct WHERE ct.tester_username='" . $_SESSION["current_user"] . "' AND u.userType = 'p' AND u.username = ct.patient_username") or die ($mysqli->error);
+                $result = $mysqli->query("SELECT * FROM User u, covidtest ct WHERE ct.patient_username='" . $_SESSION["current_user"] . "' AND u.userType = 'p' AND u.username = ct.patient_username") or die ($mysqli->error);
               ?>
               <table class="table">
                   <thead>
@@ -127,8 +118,10 @@ $status = '';
                       <td><?php echo $rowTest['testID'] ?></td>
                       <td><?php echo $rowTest['patientType'] ?></td>
                       <td><?php echo $rowTest['symptoms'] ?></td>
+                      <td><?php echo $rowTest['testDate'] ?></td>
+                      <td><?php echo $rowTest['result'] ?></td>
+                      <td><?php echo $rowTest['resultDate'] ?></td>
                       <td><?php echo $rowTest['status'] ?></td>
-                      <td><?php echo $testDate ?></td>
                     </tr>
 
                   </tbody>
@@ -204,6 +197,14 @@ $status = '';
   <script src="../assets/vendor/owl.carousel/owl.carousel.min.js"></script>
   <script src="../assets/vendor/waypoints/jquery.waypoints.min.js"></script>
   <script src="../assets/vendor/aos/aos.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="../assets/js/main.js"></script>
+
+</body>
+
+</html>
+/vendor/aos/aos.js"></script>
 
   <!-- Template Main JS File -->
   <script src="../assets/js/main.js"></script>

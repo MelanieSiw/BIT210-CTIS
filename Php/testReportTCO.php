@@ -1,12 +1,16 @@
 <?php
-  session_start();
 
-  include_once 'ctisdb.php';
-  include_once 'sessionCheck.php';
+$mysqli = new mysqli('localhost', 'root', '', 'ctisdb') or die(mysqli_error($mysqli));
 
-  $sql = "SELECT * FROM User WHERE username ='" . $_SESSION["current_user"] . "'";
-  $result = mysqli_query($con, $sql);
-  $userArr = mysqli_fetch_array($result);
+session_start();
+include_once 'ctisdb.php';
+include_once 'sessionCheck.php';
+
+
+$sql = "SELECT * FROM User WHERE username ='" . $_SESSION["current_user"] . "'";
+$result = mysqli_query($con, $sql);
+$userArr = mysqli_fetch_array($result);
+
 ?>
 
 <!DOCTYPE html>
@@ -50,7 +54,7 @@
 
       <nav class="main-nav d-none d-lg-block">
         <ul>
-          <li><a href="#">Welcome back, <?php echo $userArr['username']; ?></a></li>
+          <li><a href="#">Welcome back,  <?php echo $userArr['username']; ?></a></li>
           <li class="drop-down"><a href="">Actions</a>
             <ul>
               <li><a href="TCOhomepage.php">Register Test Center</a></li>
@@ -95,43 +99,39 @@
             <header class="section-header">
               <h3>Test Report</h3>
             </header>
-
             <?php
-              $mysqli = new mysqli('localhost','root','','ctisdb') or die(mysqli_error($mysqli));
-              $resultReport = $mysqli->query("SELECT * FROM covidTest WHERE userType ='t' AND registeredBy='" . $_SESSION["current_user"] . "'") or die ($mysqli->error);
-              ?>
+              $mysqli = new mysqli ('localhost', 'root', '', 'ctisdb') or die (mysqli_error($mysqli));
+              $result = $mysqli->query("SELECT * FROM User u, covidtest ct, testcentre tc WHERE tc.manager_username='" . $_SESSION["current_user"] ."' AND u.workplace = tc.centreID AND u.userType = 't' AND u.username = ct.tester_username") or die ($mysqli->error);
+            ?>
 
             <div style="overflow-x:auto;">
               <table class="table">
                 <thead>
                   <tr>
                     <th scope="col">Test ID</th>
-                    <th scope="col">Tester ID</th>
+                    <th scope="col">Tester's username</th>
                     <th scope="col">Test Date</th>
                     <th scope="col">Patient's Username</th>
-                    <th scope="col">Patient's Fullname</th>
                     <th scope="col">Result</th>
                     <th scope="col">Result Date</th>
                     <th scope="col">Status</th>
                   </tr>
                 </thead>
-
                 <?php
-                while($rowReport = $resultReport->fetch_assoc()):
-                ?>
-
+                  while($rowTest = $result->fetch_assoc()):
+                 ?>
                 <tbody>
                   <tr>
-                    <td>TE-001</td>
-                    <td>T001</td>
-                    <td>20/10/2020</td>
-                    <td>Patient01</td>
-                    <td>Lee Keat Hong</td>
-                    <td>Negative</td>
-                    <td>23/10/2020</td>
-                    <td>Completed</th>
+                    <td><?php echo $rowTest['testID'] ?></td>
+                    <td><?php echo $rowTest['tester_username'] ?></td>
+                    <td><?php echo $rowTest['testDate'] ?></td>
+                    <td><?php echo $rowTest['patient_username'] ?></td>
+                    <td><?php echo $rowTest['result'] ?></td>
+                    <td><?php echo $rowTest['resultDate'] ?></td>
+                    <td><?php echo $rowTest['status'] ?></td>
                   </tr>
                 </tbody>
+                <?php endwhile; ?>
               </table>
                 <br><br>
             </div>
