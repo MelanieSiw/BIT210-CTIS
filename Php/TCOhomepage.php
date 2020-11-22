@@ -136,7 +136,6 @@ if (isset($_POST['submitForm'])){
                       <div class="text-center"><button id="submitButton" name="submitForm" type="submit" onclick = "verifyTC()">Register</button></div>
 
                       <br><br><br><br>
-                      </form>
 
               <?php
                 $mysqli = new mysqli ('localhost', 'root', '', 'ctisdb') or die (mysqli_error($mysqli));
@@ -176,9 +175,8 @@ if (isset($_POST['submitForm'])){
           </div>
         </div>
       </div>
-
-    </section>
-
+  </section>
+  </form>
     <!-- ======= Services Section ======= -->
     <section id="services" class="services section-bg">
       <div class="container" data-aos="fade-up">
